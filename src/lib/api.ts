@@ -58,6 +58,86 @@ export interface CropCycleDetailPayload {
   report: CycleReportRow;
 }
 
+export interface WeatherCondition {
+  temperature_c: number;
+  relative_humidity_pct: number;
+  wind_speed_kmh: number;
+  precipitation_mm: number;
+  weather_code: number;
+  weather_description: string;
+}
+
+export interface DailyForecastItem {
+  date: string;
+  temp_max_c: number;
+  temp_min_c: number;
+  precipitation_probability_pct: number;
+  precipitation_sum_mm: number;
+  weather_code: number;
+  weather_description: string;
+}
+
+export interface AgronomicRiskAlert {
+  risk_type: 'heavy_rainfall' | 'heat_stress' | 'frost_low_temp' | 'high_winds' | 'spray_window';
+  severity: 'advisory' | 'warning' | 'favorable';
+  title: string;
+  description: string;
+  recommended_action: string;
+}
+
+export interface WeatherPayload {
+  available: boolean;
+  source: string;
+  location_name: string;
+  latitude: number | null;
+  longitude: number | null;
+  timestamp: string;
+  current: WeatherCondition | null;
+  daily_forecast: DailyForecastItem[];
+  agronomic_risks: AgronomicRiskAlert[];
+  notice?: string;
+  is_demo_mode?: boolean;
+}
+
+export interface CropRecommendationItem {
+  crop_name: string;
+  recommended_varieties: string[];
+  suitability_grade: 'highly_suitable' | 'moderately_suitable' | 'conditional';
+  suitability_score: number;
+  suitability_summary: string;
+  supporting_factors: string[];
+  limiting_factors: string[];
+  recommended_planting_window: string;
+  estimated_duration_days: number;
+  water_and_soil_considerations: string;
+  required_additional_info: string[];
+  confidence_level: 'High' | 'Moderate' | 'Qualified';
+  suggested_next_step: string;
+  estimated_seed_rate_per_acre: string;
+  standard_yield_range_kg_per_acre: string;
+  suggested_cycle_draft: {
+    crop_name: string;
+    seed_variety: string;
+    target_stage: string;
+    maturity_days: number;
+  };
+}
+
+export interface RecommendationsPayload {
+  plot_evaluated: {
+    plot_name: string;
+    soil_type: string;
+    soil_ph: number | null;
+    irrigation_type: string;
+    area_acres: number | null;
+  };
+  recommendations: CropRecommendationItem[];
+  agronomic_source: string;
+  disclaimer: string;
+  evaluated_at: string;
+  is_demo_mode?: boolean;
+}
+
 export class ApiClientError extends Error {
   public issues?: Array<{ path: string; message: string }>;
   public statusCode?: number;
@@ -371,6 +451,59 @@ export const api = {
     id: string
   ): Promise<{ deleted: boolean } & PersistenceMeta> {
     return requestJson(`/api/market-entries/${id}`, ownerId, { method: 'DELETE' });
+  },
+
+  // Agricultural Weather & Forecasts
+  getWeather(
+    ownerId: string,
+    params?: { lat?: number; lon?: number; location?: string }
+  ): Promise<WeatherPayload> {
+    const q = new URLSearchParams();
+    if (params?.lat !== undefined) q.set('lat', String(params.lat));
+    if (params?.lon !== undefined) q.set('lon', String(params.lon));
+    if (params?.location) q.set('location', params.location);
+    const queryStr = q.toString() ? `?${q.toString()}` : '';
+    return requestJson(`/api/weather${queryStr}`, ownerId);
+  },
+
+  // Agricultural Crop Planning & Recommendations
+  getRecommendations(
+    ownerId: string,
+    params?: {
+      plot_id?: string;
+      soil_ph?: number;
+      soil_type?: string;
+      irrigation?: string;
+      area_acres?: number;
+    }
+  ): Promise<RecommendationsPayload> {
+    const q = new URLSearchParams();
+    if (params?.plot_id) q.set('plot_id', params.plot_id);
+    if (params?.soil_ph !== undefined) q.set('soil_ph', String(params.soil_ph));
+    if (params?.soil_type) q.set('soil_type', params.soil_type);
+    if (params?.irrigation) q.set('irrigation', params.irrigation);
+    if (params?.area_acres !== undefined) q.set('area_acres', String(params.area_acres));
+    const queryStr = q.toString() ? `?${q.toString()}` : '';
+    return requestJson(`/api/recommendations${queryStr}`, ownerId);
+  },
+
+  evaluateRecommendations(
+    ownerId: string,
+    payload: {
+      plot_id?: string;
+      plot_name?: string;
+      soil_type?: string;
+      soil_ph?: number | null;
+      irrigation_type?: string;
+      area_acres?: number | null;
+      current_season?: string;
+      previous_crop?: string;
+    }
+  ): Promise<RecommendationsPayload> {
+    return requestJson('/api/recommendations/evaluate', ownerId, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
   },
 };
 

@@ -16,6 +16,9 @@ import {
   api,
   ApiClientError,
   type CropCycleDetailPayload,
+  type RecommendationsPayload,
+  type CropRecommendationItem,
+  type WeatherPayload,
   formatStageLabel,
   formatCurrencyOrMissing,
   formatWeightOrMissing,
@@ -95,6 +98,65 @@ export function CropPlanningModule({
       data_completeness_notes: string[];
     };
   } | null>(null);
+
+  // Agronomic Recommendations & Weather State for Planning
+  const [recommendationsData, setRecommendationsData] = useState<RecommendationsPayload | null>(null);
+  const [recommendationsLoading, setRecommendationsLoading] = useState(false);
+  const [recommendationsError, setRecommendationsError] = useState<string | null>(null);
+  const [weatherData, setWeatherData] = useState<WeatherPayload | null>(null);
+
+  const loadAgronomicIntelligence = useCallback(
+    async (targetPlotId?: string) => {
+      setRecommendationsLoading(true);
+      setRecommendationsError(null);
+      try {
+        const rec = await api.getRecommendations(ownerId, targetPlotId ? { plot_id: targetPlotId } : undefined);
+        setRecommendationsData(rec);
+      } catch (err) {
+        setRecommendationsError(err instanceof Error ? err.message : 'Could not fetch crop recommendations.');
+      } finally {
+        setRecommendationsLoading(false);
+      }
+    },
+    [ownerId]
+  );
+
+  const loadWeatherIntelligence = useCallback(async () => {
+    try {
+      const w = await api.getWeather(ownerId);
+      setWeatherData(w);
+    } catch {
+      // Non-blocking telemetry
+    }
+  }, [ownerId]);
+
+  useEffect(() => {
+    void loadAgronomicIntelligence(plotId);
+    void loadWeatherIntelligence();
+  }, [plotId, loadAgronomicIntelligence, loadWeatherIntelligence]);
+
+  function handleAdoptRecommendation(rec: CropRecommendationItem) {
+    setCropName(rec.crop_name);
+    const chosenVariety = rec.recommended_varieties[0] || rec.suggested_cycle_draft?.seed_variety || '';
+    setSeedVariety(chosenVariety);
+    setSeedSource('Certified Breeder Seed Lot (ICAR/NSC)');
+    setSoilDetails(rec.water_and_soil_considerations);
+    setNotes(
+      `ICAR Suitability: ${rec.suitability_score}% (${rec.suitability_grade}). Season: ${rec.recommended_planting_window}. Expected Yield: ${rec.standard_yield_range_kg_per_acre}. Guidance: ${rec.suggested_next_step}`
+    );
+    if (sowingDate) {
+      const d = new Date(sowingDate);
+      if (!isNaN(d.getTime())) {
+        d.setDate(d.getDate() + (rec.estimated_duration_days || 90));
+        setExpectedHarvestDate(d.toISOString().split('T')[0]);
+      }
+    }
+    setStatusNotice(`Adopted ${rec.crop_name} (${chosenVariety}) recommendation into cycle draft.`);
+    const el = document.getElementById('plan-cycle-form');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   const loadCycleDetail = useCallback(
     async (cycleId: string) => {
@@ -1086,6 +1148,160 @@ export function CropPlanningModule({
           </button>
         </div>
       )}
+
+      {/* PRE-SEEDING AGRONOMIC INTELLIGENCE & VARIETAL RECOMMENDER */}
+      <div className="bg-surface-container-lowest border-[2.5px] border-primary rounded-xl p-space-md lg:p-space-lg space-y-5 brutal-shadow relative overflow-hidden">
+        <div className="absolute top-3 right-6 px-3 py-1 bg-tertiary-fixed border border-primary text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-[2px_2px_0px_#012d1d] -rotate-1 rounded-sm">
+          DISPATCH #AGRO-REC-01
+        </div>
+
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-primary pb-4 pr-32">
+          <div>
+            <div className="flex items-center gap-2 text-secondary font-label-md text-label-md font-bold mb-1">
+              <span className="material-symbols-outlined text-[20px]">psychology_alt</span>
+              <span className="uppercase">ICAR / FAO SCIENTIFIC AGRO-INTELLIGENCE</span>
+            </div>
+            <h2 className="font-headline-md text-headline-md text-primary">
+              Pre-Seeding Agronomic &amp; Varietal Recommender
+            </h2>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-3xl">
+              Deterministic crop suitability modeling grounded in ICAR agronomic thresholds and FAO water productivity index.
+              Select any parcel to generate calibrated variety recommendations with one-click adoption into your field plan.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => void loadAgronomicIntelligence(plotId)}
+            disabled={recommendationsLoading}
+            className="inline-flex items-center gap-2 px-3.5 py-2 font-label-sm text-label-sm font-bold text-primary bg-surface-container-low hover:bg-secondary-fixed border-2 border-primary rounded-lg brutal-shadow-sm whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-50"
+          >
+            <span className={`material-symbols-outlined text-[16px] ${recommendationsLoading ? 'animate-spin' : ''}`}>
+              refresh
+            </span>
+            <span>{recommendationsLoading ? 'Recalibrating...' : 'Refresh Suitability'}</span>
+          </button>
+        </div>
+
+        {/* Microclimate live banner if available */}
+        {weatherData && (
+          <div className="bg-surface-container-low p-3.5 rounded-xl border-2 border-primary flex flex-wrap items-center justify-between gap-3 text-body-sm font-body-sm">
+            <div className="flex items-center gap-2.5">
+              <span className="material-symbols-outlined text-secondary text-[22px]">thermostat</span>
+              <div>
+                <span className="font-bold text-primary">
+                  {weatherData.location_name}: {weatherData.current?.temperature_c}°C
+                </span>
+                <span className="text-on-surface-variant ml-2">
+                  (Humidity {weatherData.current?.relative_humidity_pct}%, Wind {weatherData.current?.wind_speed_kmh} km/h)
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-1 rounded bg-secondary-fixed text-primary font-bold text-label-sm uppercase border border-primary">
+                Spray: {weatherData.agronomic_risks.find(r => r.risk_type === 'spray_window')?.severity.toUpperCase() || 'OPTIMAL'}
+              </span>
+              <span className="text-xs text-on-surface-variant">Source: {weatherData.source}</span>
+            </div>
+          </div>
+        )}
+
+        {/* Active Evaluated Plot Details */}
+        {recommendationsData && (
+          <div className="flex flex-wrap items-center gap-3 font-label-sm text-label-sm">
+            <span className="px-2.5 py-1 rounded-md bg-primary text-on-primary font-bold">
+              Parcel: {recommendationsData.plot_evaluated.plot_name}
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-surface-container-low border border-primary/40 font-mono text-primary">
+              Soil: {recommendationsData.plot_evaluated.soil_type || 'Sandy Loam'} (pH {recommendationsData.plot_evaluated.soil_ph ?? '6.5'})
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-surface-container-low border border-primary/40 font-mono text-primary">
+              Irrigation: {recommendationsData.plot_evaluated.irrigation_type}
+            </span>
+            <span className="text-on-surface-variant text-xs">
+              Scientific Basis: {recommendationsData.agronomic_source}
+            </span>
+          </div>
+        )}
+
+        {recommendationsLoading && (
+          <div className="p-8 text-center font-label-md text-label-md text-primary bg-surface-container-low rounded-xl border-2 border-dashed border-primary">
+            Calculating ICAR edaphic and climatic suitability scores...
+          </div>
+        )}
+
+        {recommendationsError && (
+          <div className="p-4 bg-error-container border-2 border-error text-on-error-container rounded-xl text-body-sm">
+            {recommendationsError}
+          </div>
+        )}
+
+        {/* Recommendations Cards */}
+        {recommendationsData && !recommendationsLoading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {recommendationsData.recommendations.map((rec) => {
+              const isHigh = rec.suitability_score >= 85;
+              return (
+                <div
+                  key={rec.crop_name}
+                  className="bg-surface-container-lowest p-4 rounded-xl border-2 border-primary brutal-shadow-sm flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <span className="text-xs font-bold uppercase tracking-wider text-secondary">
+                          {rec.recommended_planting_window}
+                        </span>
+                        <h3 className="font-headline-sm text-headline-sm text-primary font-bold">
+                          {rec.crop_name}
+                        </h3>
+                      </div>
+                      <div
+                        className={`px-2.5 py-1 rounded-md font-mono font-bold text-xs border border-primary ${
+                          isHigh ? 'bg-secondary-fixed text-primary' : 'bg-tertiary-fixed text-primary'
+                        }`}
+                      >
+                        {rec.suitability_score}% SCORE
+                      </div>
+                    </div>
+
+                    <p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                      {rec.suitability_summary}
+                    </p>
+
+                    <div className="space-y-1 text-xs">
+                      <div className="flex flex-wrap gap-1">
+                        <span className="font-bold text-primary">Varieties:</span>
+                        {rec.recommended_varieties.map((v) => (
+                          <span
+                            key={v}
+                            className="px-1.5 py-0.5 rounded bg-surface-container-low border border-primary/20 text-primary font-mono"
+                          >
+                            {v}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-center justify-between text-on-surface-variant pt-1 border-t border-primary/20 font-mono">
+                        <span>Duration: {rec.estimated_duration_days} days</span>
+                        <span>Yield: ~{rec.standard_yield_range_kg_per_acre}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => handleAdoptRecommendation(rec)}
+                    className="w-full py-2 px-3 rounded-lg bg-secondary text-on-secondary border-2 border-primary font-label-sm text-label-sm font-bold brutal-shadow-sm hover:bg-secondary-container hover:text-primary transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+                    <span>Adopt into Cycle Plan →</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
 
       {/* Crop Cycle Form */}
       <form

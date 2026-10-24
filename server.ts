@@ -67,6 +67,8 @@ import {
   resolveSupabaseUrl,
   resolveSupabaseAnonKey,
 } from './src/server/auth';
+import { fetchAgriculturalWeather } from './src/server/weather';
+import { computeCropRecommendations } from './src/server/recommendations';
 
 const PORT = Number(process.env.PORT) || 3000;
 
@@ -1246,6 +1248,150 @@ STRICT SCIENTIFIC & HONESTY RULES:
       res.json({
         data: report,
         ...getPersistenceMeta(),
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  // --- 9. Agricultural Weather & Risk Analysis Endpoint ---
+  app.get('/api/weather', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      let lat: number | undefined;
+      let lon: number | undefined;
+      let locationName: string | undefined;
+
+      if (req.query.lat && req.query.lon) {
+        lat = Number(req.query.lat);
+        lon = Number(req.query.lon);
+      }
+      if (typeof req.query.location === 'string') {
+        locationName = req.query.location;
+      }
+
+      // If coordinates not provided, check the authenticated owner's primary farm
+      if ((!lat || !lon) && req.ownerId) {
+        const farms = await listFarms(req.ownerId);
+        const primary = farms[0];
+        if (primary?.location) {
+          locationName = primary.location;
+        }
+      }
+
+      const weather = await fetchAgriculturalWeather({
+        latitude: lat,
+        longitude: lon,
+        locationName,
+      });
+
+      res.json({
+        ...weather,
+        owner_id: req.ownerId,
+        is_demo_mode: Boolean(req.isDemoMode),
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  // --- 10. Agricultural Crop Planning & Recommendations Endpoint ---
+  app.get('/api/recommendations', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      let plotId = typeof req.query.plot_id === 'string' ? req.query.plot_id : undefined;
+      let plotName = typeof req.query.plot_name === 'string' ? req.query.plot_name : undefined;
+      let soilType = typeof req.query.soil_type === 'string' ? req.query.soil_type : undefined;
+      let soilPh = req.query.soil_ph !== undefined ? Number(req.query.soil_ph) : undefined;
+      let irrigation = typeof req.query.irrigation === 'string' ? req.query.irrigation : undefined;
+      let area = req.query.area_acres !== undefined ? Number(req.query.area_acres) : undefined;
+
+      if (plotId && req.ownerId) {
+        const plots = await listPlots(req.ownerId);
+        const plot = plots.find((p) => p.id === plotId);
+        if (plot) {
+          plotName = plot.name;
+          soilType = plot.soil_type || soilType;
+          soilPh = plot.soil_ph !== null ? plot.soil_ph : soilPh;
+          irrigation = plot.irrigation_type || irrigation;
+          area = plot.area_acres;
+        }
+      } else if (!plotId && req.ownerId) {
+        const plots = await listPlots(req.ownerId);
+        if (plots.length > 0) {
+          const plot = plots[0];
+          plotId = plot.id;
+          plotName = plot.name;
+          soilType = plot.soil_type || soilType;
+          soilPh = plot.soil_ph !== null ? plot.soil_ph : soilPh;
+          irrigation = plot.irrigation_type || irrigation;
+          area = plot.area_acres;
+        }
+      }
+
+      const recommendations = computeCropRecommendations({
+        plot_id: plotId,
+        plot_name: plotName,
+        soil_type: soilType,
+        soil_ph: soilPh,
+        irrigation_type: irrigation,
+        area_acres: area,
+      });
+
+      res.json({
+        ...recommendations,
+        owner_id: req.ownerId,
+        is_demo_mode: Boolean(req.isDemoMode),
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  app.post('/api/recommendations/evaluate', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const {
+        plot_id,
+        plot_name,
+        soil_type,
+        soil_ph,
+        irrigation_type,
+        area_acres,
+        current_season,
+        previous_crop,
+      } = req.body || {};
+
+      let evaluatedSoilType = soil_type;
+      let evaluatedSoilPh = soil_ph !== undefined && soil_ph !== null ? Number(soil_ph) : null;
+      let evaluatedIrrigation = irrigation_type;
+      let evaluatedArea = area_acres !== undefined && area_acres !== null ? Number(area_acres) : null;
+      let evaluatedPlotName = plot_name || 'Target Parcel';
+
+      if (plot_id && req.ownerId) {
+        const plots = await listPlots(req.ownerId);
+        const plot = plots.find((p) => p.id === plot_id);
+        if (plot) {
+          evaluatedPlotName = plot.name;
+          if (!evaluatedSoilType) evaluatedSoilType = plot.soil_type;
+          if (evaluatedSoilPh === null) evaluatedSoilPh = plot.soil_ph;
+          if (!evaluatedIrrigation) evaluatedIrrigation = plot.irrigation_type;
+          if (evaluatedArea === null) evaluatedArea = plot.area_acres;
+        }
+      }
+
+      const recommendations = computeCropRecommendations({
+        plot_id,
+        plot_name: evaluatedPlotName,
+        soil_type: evaluatedSoilType,
+        soil_ph: evaluatedSoilPh,
+        irrigation_type: evaluatedIrrigation,
+        area_acres: evaluatedArea,
+        current_season,
+        previous_crop,
+      });
+
+      res.json({
+        ...recommendations,
+        owner_id: req.ownerId,
+        is_demo_mode: Boolean(req.isDemoMode),
       });
     } catch (err) {
       next(err);

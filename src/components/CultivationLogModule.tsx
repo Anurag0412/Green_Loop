@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   ACTIVITY_TYPES,
   CROP_STAGES,
@@ -6,7 +6,13 @@ import {
   type CultivationEvent,
   type CultivationEventInput,
 } from '../shared/validation';
-import { api, ApiClientError, formatStageLabel, formatCurrencyOrMissing } from '../lib/api';
+import {
+  api,
+  ApiClientError,
+  type WeatherPayload,
+  formatStageLabel,
+  formatCurrencyOrMissing,
+} from '../lib/api';
 
 interface Props {
   ownerId: string;
@@ -14,6 +20,15 @@ interface Props {
   cultivationEvents: CultivationEvent[];
   onRefresh: () => Promise<void>;
 }
+
+export interface PendingOfflineEvent {
+  clientId: string;
+  payload: CultivationEventInput;
+  savedAt: string;
+  cropName?: string;
+}
+
+const OFFLINE_KEY = 'greenloop_offline_cultivation_events';
 
 const QUICK_CATEGORIES: Array<{
   type: CultivationEvent['activity_type'];
@@ -47,7 +62,70 @@ export function CultivationLogModule({
   const [statusNotice, setStatusNotice] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
+  // Phase 10: Offline Field Operations State
+  const [isOnline, setIsOnline] = useState<boolean>(
+    typeof navigator !== 'undefined' ? navigator.onLine : true
+  );
+  const [simulateOffline, setSimulateOffline] = useState(false);
+  const [pendingOfflineEvents, setPendingOfflineEvents] = useState<PendingOfflineEvent[]>([]);
+  const [syncingOffline, setSyncingOffline] = useState(false);
+  const [weatherData, setWeatherData] = useState<WeatherPayload | null>(null);
+
   const targetCycleId = cropCycleId || cropCycles[0]?.id || '';
+
+  // Load offline queue & listen for network status
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(OFFLINE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored) as PendingOfflineEvent[];
+        if (Array.isArray(parsed)) {
+          setPendingOfflineEvents(parsed);
+        }
+      }
+    } catch {
+      // storage unavailable
+    }
+
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    void api.getWeather(ownerId).then(setWeatherData).catch(() => {});
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [ownerId]);
+
+  async function handleSyncOfflineQueue() {
+    if (pendingOfflineEvents.length === 0) return;
+    setSyncingOffline(true);
+    setError(null);
+    try {
+      let count = 0;
+      for (const item of pendingOfflineEvents) {
+        await api.createCultivationEvent(ownerId, item.payload);
+        count++;
+      }
+      localStorage.removeItem(OFFLINE_KEY);
+      setPendingOfflineEvents([]);
+      setStatusNotice(`Successfully synced ${count} queued field log${count > 1 ? 's' : ''} to database.`);
+      await onRefresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error syncing pending offline logs.');
+    } finally {
+      setSyncingOffline(false);
+    }
+  }
+
+  function handleClearOfflineQueue() {
+    localStorage.removeItem(OFFLINE_KEY);
+    setPendingOfflineEvents([]);
+    setStatusNotice('Cleared pending offline queue.');
+  }
 
   function resetForm() {
     setEditingId(null);
@@ -101,6 +179,28 @@ export function CultivationLogModule({
       cost_amount: parsedCost,
       observations: observations.trim() || null,
     };
+
+    // If offline or simulated offline mode is active, buffer locally
+    if (!isOnline || simulateOffline) {
+      const offlineItem: PendingOfflineEvent = {
+        clientId: `offline_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        payload,
+        savedAt: new Date().toISOString(),
+        cropName: cropCycles.find((c) => c.id === targetCycleId)?.crop_name,
+      };
+      const nextQueue = [...pendingOfflineEvents, offlineItem];
+      setPendingOfflineEvents(nextQueue);
+      try {
+        localStorage.setItem(OFFLINE_KEY, JSON.stringify(nextQueue));
+      } catch {
+        // quota fallback
+      }
+      setStatusNotice(
+        `[Offline Buffer] Activity saved to local field buffer (${nextQueue.length} pending sync). No data lost.`
+      );
+      resetForm();
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -167,6 +267,82 @@ export function CultivationLogModule({
             an invoice or utility bill is still pending.
           </p>
         </div>
+      </div>
+
+      {/* PHASE 10: OFFLINE FIELD OPERATIONS & CONNECTIVITY CONSOLE */}
+      <div className="bg-surface-container-lowest p-space-md rounded-xl border-[2.5px] border-primary brutal-shadow space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span
+              className={`w-3.5 h-3.5 rounded-full border-2 border-primary ${
+                isOnline && !simulateOffline ? 'bg-secondary animate-pulse' : 'bg-tertiary-fixed'
+              }`}
+            ></span>
+            <div>
+              <span className="font-label-sm text-label-sm uppercase font-bold text-primary block">
+                {isOnline && !simulateOffline
+                  ? 'Field Telemetry: Connected (Supabase Live)'
+                  : 'Field Telemetry: Remote Field Mode (Local Buffer Active)'}
+              </span>
+              <span className="text-xs text-on-surface-variant font-mono">
+                {pendingOfflineEvents.length} pending local record{pendingOfflineEvents.length === 1 ? '' : 's'} queued
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setSimulateOffline(!simulateOffline)}
+              className={`px-3 py-1.5 rounded-lg border-2 border-primary font-label-sm text-label-sm font-bold transition-all cursor-pointer ${
+                simulateOffline
+                  ? 'bg-tertiary-fixed text-primary brutal-shadow-sm'
+                  : 'bg-surface-container-low text-primary hover:bg-surface-container'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[16px] align-middle mr-1">
+                {simulateOffline ? 'wifi_off' : 'wifi'}
+              </span>
+              <span>{simulateOffline ? 'Disable Remote Field Sim' : 'Simulate Offline Field'}</span>
+            </button>
+
+            {pendingOfflineEvents.length > 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={handleSyncOfflineQueue}
+                  disabled={syncingOffline || (!isOnline && !simulateOffline)}
+                  className="px-4 py-1.5 rounded-lg bg-secondary text-on-secondary border-2 border-primary font-label-sm text-label-sm font-bold brutal-shadow-sm hover:bg-secondary-container hover:text-primary transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  <span className={`material-symbols-outlined text-[16px] ${syncingOffline ? 'animate-spin' : ''}`}>
+                    sync
+                  </span>
+                  <span>{syncingOffline ? 'Syncing...' : `Sync ${pendingOfflineEvents.length} Queued Records`}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleClearOfflineQueue}
+                  disabled={syncingOffline}
+                  className="px-2.5 py-1.5 rounded-lg bg-surface-container-low text-error border border-error/50 font-label-sm text-label-sm font-bold hover:bg-error-container cursor-pointer"
+                >
+                  Clear Buffer
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {pendingOfflineEvents.length > 0 && (
+          <div className="p-2.5 bg-surface-container-low rounded-lg border border-primary/30 flex flex-wrap gap-2 text-xs font-mono">
+            <span className="font-bold text-primary">Pending Queue:</span>
+            {pendingOfflineEvents.map((item, idx) => (
+              <span key={item.clientId} className="px-2 py-0.5 rounded bg-surface-container-lowest border border-primary/20 text-on-surface-variant">
+                #{idx + 1} {formatStageLabel(item.payload.activity_type)} ({item.cropName || 'Parcel'}) @ {item.payload.event_date}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {statusNotice && (
@@ -244,6 +420,28 @@ export function CultivationLogModule({
                 );
               })}
             </div>
+
+            {/* Live Spray Window Safety Check */}
+            {(activityType === 'pest_management' || activityType === 'fertilizer') && weatherData && (
+              <div className="p-3 bg-secondary-fixed/40 border-2 border-primary rounded-xl flex items-center justify-between gap-3 text-body-sm font-body-sm">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[22px]">air</span>
+                  <div>
+                    <span className="font-bold text-primary">
+                      Microclimate Spray Assessment ({weatherData.location_name})
+                    </span>
+                    <span className="block text-xs text-on-surface-variant">
+                      Wind: {weatherData.current?.wind_speed_kmh ?? 0} km/h • Rain Probability:{' '}
+                      {weatherData.daily_forecast[0]?.precipitation_probability_pct ?? 0}% • Condition:{' '}
+                      {weatherData.current?.weather_description ?? 'Clear'}
+                    </span>
+                  </div>
+                </div>
+                <span className="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-bold text-xs uppercase font-mono">
+                  {weatherData.agronomic_risks.find((r) => r.risk_type === 'spray_window')?.severity.toUpperCase() || 'FAVORABLE'} WINDOW
+                </span>
+              </div>
+            )}
 
             {error && (
               <div

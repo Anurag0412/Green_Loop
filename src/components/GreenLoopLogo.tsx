@@ -18,130 +18,39 @@ export function GreenLoopLogo({
   subtitle = 'AgroTech Field Journal',
   className = '',
 }: GreenLoopLogoProps) {
-  const dimensions = {
-    sm: 'w-9 h-9',
-    md: 'w-11 h-11',
-    lg: 'w-14 h-14',
-    xl: 'w-16 h-16',
+  const iconDimensions = {
+    sm: 'w-8 h-8 rounded-md text-[18px]',
+    md: 'w-10 h-10 rounded-lg text-[24px]',
+    lg: 'w-12 h-12 rounded-xl text-[28px]',
+    xl: 'w-14 h-14 rounded-xl text-[32px]',
   }[size];
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none ${className}`}>
+    <div className={`inline-flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
+      {/* Official AgroTech Brand Badge with Potted Plant Emblem */}
       <div
-        className={`${dimensions} relative shrink-0 rounded-xl bg-[#006c48] border-[2.5px] border-[#012d1d] shadow-[3px_3px_0px_#012d1d] flex items-center justify-center overflow-hidden group-hover:-translate-y-0.5 transition-transform`}
+        className={`${iconDimensions.split(' text-')[0]} shrink-0 bg-secondary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d] group-hover:-translate-y-0.5 transition-transform overflow-hidden relative`}
       >
-        <svg
-          viewBox="0 0 64 64"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          aria-label="Green Loop Brand Emblem"
-          role="img"
+        <span
+          className={`material-symbols-outlined text-on-secondary ${iconDimensions.split(' ')[2]} leading-none`}
+          aria-hidden="true"
         >
-          {/* Subtle grid lines inside seal */}
-          <path
-            d="M0 16H64M0 32H64M0 48H64M16 0V64M32 0V64M48 0V64"
-            stroke="#8af6b8"
-            strokeOpacity="0.18"
-            strokeWidth="1"
-          />
-
-          {/* Sun / Harvest Gold Halo */}
-          <circle
-            cx="47"
-            cy="16"
-            r="7.5"
-            fill="#ffdb92"
-            stroke="#012d1d"
-            strokeWidth="2.5"
-          />
-
-          {/* Soil / Terraced Horizon Base */}
-          <path
-            d="M6 50C16 45 27 45 38 49C47 52 54 51 58 48V58H6V50Z"
-            fill="#012d1d"
-          />
-          <path
-            d="M8 53H56"
-            stroke="#ffdb92"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeDasharray="4 4"
-          />
-
-          {/* Outer Continuous Green Loop (Seed-to-Market Cycle Ring) */}
-          <path
-            d="M17 39C12.5 34.5 12.5 25.5 18 20C23.5 14.5 32.5 15 38 20.5L43 25.5"
-            stroke="#8af6b8"
-            strokeWidth="5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M47 28C50.5 33.5 49.5 41.5 44 46C38.5 50.5 29.5 50 24 44.5"
-            stroke="#ffdb92"
-            strokeWidth="4.5"
-            strokeLinecap="round"
-          />
-
-          {/* Loop Arrowhead */}
-          <path
-            d="M44 19L45.5 27.5L37 26"
-            stroke="#012d1d"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M43 18L44.5 26.5L36 25"
-            stroke="#8af6b8"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Central Botanical Leaf Sprout */}
-          <path
-            d="M22 42C22 28 33 19 45 19C45 31 36 42 22 42Z"
-            fill="#8af6b8"
-            stroke="#012d1d"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* Leaf Left Cotyledon */}
-          <path
-            d="M23 38C15 36 12 29 14 22C21 22 26 28 25 36"
-            fill="#92f7c3"
-            stroke="#012d1d"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-          />
-          {/* Leaf Central Stem & Veins */}
-          <path
-            d="M20 45C25 37 31 30 39 24"
-            stroke="#012d1d"
-            strokeWidth="2.75"
-            strokeLinecap="round"
-          />
-          <path
-            d="M29 33L35 33M26 37L32 37"
-            stroke="#012d1d"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
+          potted_plant
+        </span>
+        <span className="sr-only">Green Loop Brand Emblem</span>
       </div>
 
       {showText && (
         <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <span className="font-headline-sm text-headline-sm text-primary tracking-tight leading-none font-extrabold">
+          <div className="flex items-center gap-1.5">
+            <span className="font-headline-sm text-headline-sm text-primary tracking-tight font-extrabold leading-none">
               GREEN LOOP
             </span>
-            <span className="px-1.5 py-0.5 rounded bg-tertiary-fixed border-[1.5px] border-primary font-mono text-[10px] font-bold text-primary -rotate-2 shadow-[1.5px_1.5px_0px_#012d1d] leading-none">
-              SEAL V2.4
+            <span className="px-1.5 py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-[10px] text-primary -rotate-2 shadow-[1px_1px_0px_#012d1d] font-bold leading-none">
+              V2.4
             </span>
           </div>
-          <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-0.5">
+          <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5 font-semibold">
             {subtitle}
           </span>
         </div>

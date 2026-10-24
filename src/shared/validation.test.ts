@@ -382,3 +382,22 @@ test('Authentication token verification rejects missing, tampered, and expired t
       err.statusCode === 401 && err.code === 'TOKEN_EXPIRED'
   );
 });
+
+test('computeCropRecommendations generates deterministic ICAR suitability scores and draft parameters', async () => {
+  const { computeCropRecommendations } = await import('../server/recommendations.js');
+  const result = computeCropRecommendations({
+    plot_name: 'Parcel North Drip',
+    soil_ph: 6.8,
+    soil_type: 'Clay Loam',
+    irrigation_type: 'drip',
+    area_acres: 2.5,
+  });
+
+  assert.ok(result.recommendations.length > 0, 'Should return recommendations');
+  const topRec = result.recommendations[0];
+  assert.ok(topRec.suitability_score >= 80, 'Top recommendation should have score >= 80');
+  assert.ok(topRec.recommended_varieties.length > 0, 'Should have recommended varieties');
+  assert.ok(topRec.suggested_cycle_draft.crop_name, 'Should provide cycle draft');
+  assert.ok(result.agronomic_source.includes('ICAR'), 'Source must cite ICAR standards');
+});
+
