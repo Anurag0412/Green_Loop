@@ -1,0 +1,6 @@
+{
+  "name": "Green Loop — Agritech Decision Support",
+  "description": "Full-stack crop lifecycle management, cultivation logging, harvest tracking, experimental visual quality assessment, and farm reporting platform.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

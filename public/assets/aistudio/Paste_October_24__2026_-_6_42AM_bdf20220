@@ -1,0 +1,2557 @@
+<!-- Green Loop - Operations Dashboard (CraveQuest Style) -->
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Green Loop - AgroTech Field Journal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}body{background-image:linear-gradient(to right,#e2ead8 1px,transparent 1px),linear-gradient(to bottom,#e2ead8 1px,transparent 1px);background-size:24px 24px;background-color:#f6fbf4;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#c4a24c", "outline-variant": "#c1c8c2", "primary": "#012d1d", "primary-fixed": "#c1ecd4", "on-secondary-fixed": "#002113", "surface-dim": "#d7dbd5", "tertiary-container": "#4c3900", "on-primary": "#ffffff", "on-surface": "#181d19", "inverse-primary": "#a5d0b9", "secondary-fixed": "#92f7c3", "surface": "#f6fbf4", "surface-container": "#ebefe8", "background": "#f6fbf4", "on-background": "#181d19", "on-primary-container": "#86af99", "tertiary-fixed": "#ffdf96", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-primary-fixed": "#002114", "secondary": "#006c48", "inverse-on-surface": "#edf2eb", "on-secondary-fixed-variant": "#005235", "inverse-surface": "#2d322d", "on-error": "#ffffff", "surface-bright": "#f6fbf4", "on-tertiary-fixed": "#251a00", "surface-container-high": "#e5e9e3", "secondary-container": "#92f7c3", "tertiary-fixed-dim": "#e7c268", "on-tertiary-fixed-variant": "#5a4400", "surface-tint": "#3f6653", "on-surface-variant": "#414844", "primary-container": "#1b4332", "tertiary": "#322400", "surface-container-lowest": "#ffffff", "surface-container-highest": "#dfe4dd", "surface-variant": "#dfe4dd", "surface-container-low": "#f0f5ee", "on-primary-fixed-variant": "#274e3d", "on-error-container": "#93000a", "on-secondary": "#ffffff", "on-secondary-container": "#00734d", "secondary-fixed-dim": "#75daa8", "error": "#ba1a1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1.5rem", "gutter": "1.25rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter-mobile": "0.75rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-sm": ["Bricolage Grotesque"], "headline-lg-mobile": ["Bricolage Grotesque"], "headline-md": ["Bricolage Grotesque"], "display-lg": ["Bricolage Grotesque"], "label-sm": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Bricolage Grotesque"], "label-md": ["Space Grotesk"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Bricolage Grotesque"], "label-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-lg-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-[2.5px] border-primary shadow-[0_4px_0_0_#012d1d]"><div class="h-20 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-secondary text-[24px]">potted_plant</span></div><div><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">GREEN LOOP</span><span class="px-space-xs py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary -rotate-2 shadow-[1px_1px_0px_#012d1d]">V2.4</span></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AgroTech Field Journal</p></div></div><div class="hidden xl:flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface border-2 border-primary rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-[3px_3px_0px_#006c48] transition-all" placeholder="Search parcels, crops, telemetry..." type="text"/></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="hidden md:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-secondary text-[16px]">agriculture</span><span class="font-label-md text-label-md text-primary font-bold">Valley Ridge Farm</span></div><div class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-fixed border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-secondary-fixed font-bold uppercase">48 Nodes Online</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="bg-surface-container-low border-t-2 border-primary px-margin lg:px-margin-desktop overflow-x-auto"><div class="max-w-7xl mx-auto flex items-center justify-between"><nav class="flex items-center gap-space-xs py-2" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[3px_3px_0px_#012d1d] -translate-y-0.5"><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="dashboard-operations" href="#">Dashboard &amp; Operations</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="farm-plot-management" href="#">Farm &amp; Plot Management</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="crop-cycles-cultivation" href="#">Crop Cycles &amp; Cultivation</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="harvest-quality-assessment" href="#">Harvest &amp; Quality Assessment</a></nav><div class="hidden lg:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">sync</span><span>Syncing Telemetry Mesh</span></div></div></div></header><main class="w-full pt-28 bg-transparent min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto w-full px-margin lg:px-margin-desktop py-space-md space-y-space-lg">
+<!-- Dispatch & Growing Condition Strip (Stationery Stamp Style) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md lg:p-space-lg shadow-xl relative overflow-hidden">
+<!-- Decorative vintage tape strip -->
+<div class="absolute -top-3 left-12 w-28 h-7 bg-tertiary-fixed opacity-90 rotate-2 shadow-sm pointer-events-none flex items-center justify-center">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">DISPATCH #882</span>
+</div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md pt-2">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm uppercase flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              Live Telemetry Linked
+            </span>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-tertiary font-label-sm text-label-sm uppercase shadow-sm">
+              Microclimate: Riparian South Slope
+            </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Updated 3m ago</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            Field Dispatch: Valley Ridge Farm Overview
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            All 5 bio-sectors reporting regular circadian transpiration. Automated subsurface drip manifold responding to solar flux.
+          </p>
+</div>
+<!-- Condition Scorecard & Quick Action Buttons -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-md w-full lg:w-auto shrink-0">
+<!-- Tactile Stamp: Growing Condition Score -->
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-space-sm shadow-md min-w-[170px]">
+<div class="w-14 h-14 rounded-lg bg-primary-container text-secondary-fixed flex flex-col items-center justify-center shadow-inner">
+<span class="font-headline-sm text-headline-sm leading-none">94</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim leading-tight">/100</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Bio-Index</div>
+<div class="font-headline-sm text-headline-sm text-primary">OPTIMAL</div>
+<div class="font-label-sm text-label-sm text-secondary font-bold">+2.4% vs lw</div>
+</div>
+</div>
+<!-- Chunky Interactive Buttons -->
+<div class="flex flex-col sm:flex-row gap-space-xs w-full sm:w-auto">
+<button class="px-4 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg transition-transform active:translate-y-1 shadow-md hover:bg-secondary/90 flex items-center justify-center gap-2" id="valve-btn">
+<span class="material-symbols-outlined text-[18px]">valve</span>
+              Automate Valves
+            </button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-low text-primary font-label-lg text-label-lg transition-transform active:translate-y-1 shadow-md hover:bg-surface-container-high flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+              Export Daily Log
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 4 Key Metric Summary Cards (Tactile Field-Note Index Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative group transition-transform hover:-translate-y-1">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Index: T-01 · Acreage</span>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[18px]">landscape</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">240.5 <span class="font-label-md text-label-md text-on-surface-variant">Acres</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Total Cultivated Land</p>
+</div>
+<div class="mt-space-sm pt-space-xs bg-surface-container-low rounded-md px-2.5 py-1.5 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>Active Parcels: 18</span>
+<span class="text-secondary font-bold">100% Surveyed</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative group transition-transform hover:-translate-y-1">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Index: S-04 · Hydration</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">28.4% <span class="font-label-md text-label-md text-secondary font-bold">VWC</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg Volumetric Soil Moisture</p>
+</div>
+<div class="mt-space-sm pt-space-xs bg-surface-container-low rounded-md px-2.5 py-1.5 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>Optimal Range: 24-32%</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-bold">STABLE</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative group transition-transform hover:-translate-y-1">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Index: B-12 · Cultivars</span>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[18px]">grain</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">14 <span class="font-label-md text-label-md text-on-surface-variant">Batches</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Active Crop Batches</p>
+</div>
+<div class="mt-space-sm pt-space-xs bg-surface-container-low rounded-md px-2.5 py-1.5 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>3 Early Ripening</span>
+<span class="text-tertiary font-bold">Cycle #4</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative group transition-transform hover:-translate-y-1">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Index: Y-88 · Harvest Target</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[18px]">agriculture</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">48.2 <span class="font-label-md text-label-md text-on-surface-variant">Tons</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Projected Aggregate Yield</p>
+</div>
+<div class="mt-space-sm pt-space-xs bg-surface-container-low rounded-md px-2.5 py-1.5 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>Target Confidence</span>
+<span class="text-secondary font-bold">96.8%</span>
+</div>
+</div>
+</div>
+<!-- Main Content Workspace: Asymmetric Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Field Specimen Cards & Plot Matrix (8 cols) -->
+<div class="lg:col-span-8 space-y-space-md">
+<!-- Section Header with Ledger Details -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs bg-surface-container-lowest p-space-sm px-space-md rounded-xl shadow-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">view_quilt</span>
+<span class="font-headline-sm text-headline-sm text-primary">Field Plot Matrix</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold">Sector North-West</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sort by:</span>
+<select class="bg-surface-container-low font-label-sm text-label-sm text-primary py-1 px-2.5 rounded-md focus:outline-none">
+<option>Transpiration Index (Highest)</option>
+<option>Moisture Deficit</option>
+<option>Days to Harvest</option>
+</select>
+</div>
+</div>
+<!-- Specimen Grid (CraveQuest Stationery Stamp Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Specimen 1: Plot 1A -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg flex flex-col justify-between relative group hover:shadow-xl transition-all">
+<div class="absolute -top-2.5 -right-2 bg-tertiary-fixed text-tertiary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm -rotate-3 shadow-sm">
+              ★ PREMIUM LOT
+            </div>
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pb-1.5">
+<span class="font-bold text-primary">PARCEL ID: PLOT-1A</span>
+<span>Sub-Block Alpha</span>
+</div>
+<!-- Dish-style Image Specimen -->
+<div class="w-full h-36 rounded-lg overflow-hidden relative shadow-sm my-2">
+<img class="w-full h-full object-cover" data-alt="Close up shot of ripe red heirloom tomatoes growing on healthy lush green vines with dewdrops in morning farm sunlight with earthy organic feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnisltyU8KAIDEG-DdPdCKPMXrmn6U5a59B8iMknTkZ8GB_utdj-9LO6qhhiC6Sv9HqCgwD2Xo3E6S4-od0SnuHchih1-8vj5WDH06_-ZPzqq004jEgNUlTuVwHdxTj-AuB5fr6q6maaq-RMs3WmQqbk2XiWYv6cCpRLtudUMn1uQoBAzg77U0z3Nn5_ggq6gNTMnXgLUIcw_7T433KAVCNsDOoilzhQ0a9QklJkXBPgpZzIxyhdO4bQ"/>
+<div class="absolute bottom-2 left-2 bg-primary/85 backdrop-blur-sm text-on-primary px-2.5 py-0.5 rounded font-label-sm text-label-sm">
+                  Heirloom Tomatoes
+                </div>
+</div>
+<div class="flex items-baseline justify-between mt-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Cherokee Purple</h3>
+<span class="font-label-lg text-label-lg text-secondary font-bold">Vigor 96%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Day 68 of 85. Fruit cluster maturation optimal. Sugar brix accumulation +1.4°Bx.
+              </p>
+<!-- Soil & Nutrient Bar -->
+<div class="mt-space-sm p-space-xs bg-surface-container-low rounded-lg space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Soil Moisture: 31.2%</span>
+<span class="text-secondary font-bold">Target Saturation</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">N: 48ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">P: 22ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">K: 84ppm</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">water_drop</span>
+                Drip 0.8 L/hr
+              </span>
+<button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container-high text-primary rounded-lg font-label-sm text-label-sm active:translate-y-0.5 transition-all shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                Log Action
+              </button>
+</div>
+</div>
+<!-- Specimen 2: Plot 1B -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg flex flex-col justify-between relative group hover:shadow-xl transition-all">
+<div class="absolute -top-2.5 -right-2 bg-secondary-fixed text-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm rotate-2 shadow-sm">
+              HARVEST IN 4 DAYS
+            </div>
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pb-1.5">
+<span class="font-bold text-primary">PARCEL ID: PLOT-1B</span>
+<span>Hydro-Trench Beta</span>
+</div>
+<!-- Specimen Image -->
+<div class="w-full h-36 rounded-lg overflow-hidden relative shadow-sm my-2">
+<img class="w-full h-full object-cover" data-alt="Dense vibrant green rows of crisp romaine lettuce heads in rich black loamy garden soil under soft agricultural diffusion netting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmB4G8KbJ0Bt5obV7N4LY28RbHFiQOplMtNgbPvUt-z35AfNnXxumimmkt_7mPjMnkA1ZQa5tT8xWiL7UC9c7hE0-R1TPqHPHelC41k1MyII_z-K4nEZlJe6XN0nkFKygbZ5Ru6LoAyHE-G0W6B9PbVhZk0sBU9fSAqUFT4_advy88Pj6aXZRVWlCikwGUewN4tvAwDvOPvfmB4gWIxBL7XYDZDNy-nHYbxbbHdjDpCnxfGHKv1Joscw"/>
+<div class="absolute bottom-2 left-2 bg-primary/85 backdrop-blur-sm text-on-primary px-2.5 py-0.5 rounded font-label-sm text-label-sm">
+                  Romaine Lettuce
+                </div>
+</div>
+<div class="flex items-baseline justify-between mt-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Little Gem Crisp</h3>
+<span class="font-label-lg text-label-lg text-secondary font-bold">Vigor 91%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Head density achieved. Pre-harvest irrigation tapering initiated to boost crispness.
+              </p>
+<!-- Soil & Nutrient Bar -->
+<div class="mt-space-sm p-space-xs bg-surface-container-low rounded-lg space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Soil Moisture: 24.8%</span>
+<span class="text-secondary font-bold">Controlled Dry-down</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 62%"></div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">N: 35ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">P: 18ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">K: 60ppm</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">schedule</span>
+                Pick Ready 08:00
+              </span>
+<button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container-high text-primary rounded-lg font-label-sm text-label-sm active:translate-y-0.5 transition-all shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                Log Action
+              </button>
+</div>
+</div>
+<!-- Specimen 3: Plot 2A -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg flex flex-col justify-between relative group hover:shadow-xl transition-all">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pb-1.5">
+<span class="font-bold text-primary">PARCEL ID: PLOT-2A</span>
+<span>South Terraces</span>
+</div>
+<div class="w-full h-36 rounded-lg overflow-hidden relative shadow-sm my-2">
+<img class="w-full h-full object-cover" data-alt="Vibrant orange and fiery red habanero peppers hanging ripe from bushy dark green pepper plants under bright afternoon sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3v27TFQu-06zf5aW8yPaq4B53Z6Rdl4HRip7VfTa8cIbypNRDjRxrOux4pnl9SyeBj4gF19cPnbqF9kWqY-Pl4ikYWXRXErjgsMnXQgEqK0pirQy-IgNLONjHVDER5RRBM6kWfhF8reodieg0fwnluRDCQw63A4B9RMzpMHTQkyBrKSI9DH576j506tHzHvhLgw4io7Ln03_7AjXjiqaHPiRSncJzobxr3DmD6bC9HVkSpk7vSIx29g"/>
+<div class="absolute bottom-2 left-2 bg-primary/85 backdrop-blur-sm text-on-primary px-2.5 py-0.5 rounded font-label-sm text-label-sm">
+                  Habanero Peppers
+                </div>
+</div>
+<div class="flex items-baseline justify-between mt-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Orange Sunburst</h3>
+<span class="font-label-lg text-label-lg text-secondary font-bold">Vigor 88%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                High capsicum stress-tolerance protocol underway. Deep root telemetry stable.
+              </p>
+<div class="mt-space-sm p-space-xs bg-surface-container-low rounded-lg space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Soil Moisture: 21.5%</span>
+<span class="text-tertiary font-bold">Moderate Stress Mode</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim rounded-full" style="width: 48%"></div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">N: 52ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">P: 29ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">K: 92ppm</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">thermostat</span>
+                Canopy: 78°F
+              </span>
+<button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container-high text-primary rounded-lg font-label-sm text-label-sm active:translate-y-0.5 transition-all shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                Log Action
+              </button>
+</div>
+</div>
+<!-- Specimen 4: Plot 3A -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg flex flex-col justify-between relative group hover:shadow-xl transition-all">
+<div class="absolute -top-2.5 -right-2 bg-primary-fixed text-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm -rotate-2 shadow-sm">
+              POLLINATOR SURGE
+            </div>
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pb-1.5">
+<span class="font-bold text-primary">PARCEL ID: PLOT-3A</span>
+<span>East Poly-Tunnel</span>
+</div>
+<div class="w-full h-36 rounded-lg overflow-hidden relative shadow-sm my-2">
+<img class="w-full h-full object-cover" data-alt="Macro view of ruby red fresh strawberries in raised greenhouse organic peat moss bedding with small white blossom flowers visible" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ5eJk3eRw0YATP7Da-nogCdcyhvffdad1fHi-28q60-G8DeT0wz4A6nHjE0tJJdFHKfW47rzno8Dbfpya0eIGuFf-lA0sH23fck6ZB8BXIhktk9OsUhT_jdF6-rZMAevINYmKGHwbsA1rJpbGLlZVTKb61du-txvC3_yR8sCvILX0ndwNne6FLTHg8H8MLvoLESqwVdu62m_q1CpdxP961SScTbn3rqo-u-8DLiBoDWW8dZ2mxSGT6w"/>
+<div class="absolute bottom-2 left-2 bg-primary/85 backdrop-blur-sm text-on-primary px-2.5 py-0.5 rounded font-label-sm text-label-sm">
+                  Albion Strawberries
+                </div>
+</div>
+<div class="flex items-baseline justify-between mt-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Albion Everbearing</h3>
+<span class="font-label-lg text-label-lg text-secondary font-bold">Vigor 98%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Continuous bloom and runner production. Foliar micro-nutrients applied yesterday.
+              </p>
+<div class="mt-space-sm p-space-xs bg-surface-container-low rounded-lg space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Soil Moisture: 29.4%</span>
+<span class="text-secondary font-bold">Optimal Berry Yield</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 74%"></div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">N: 41ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">P: 34ppm</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">K: 88ppm</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">eco</span>
+                Brix: 11.2°
+              </span>
+<button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container-high text-primary rounded-lg font-label-sm text-label-sm active:translate-y-0.5 transition-all shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                Log Action
+              </button>
+</div>
+</div>
+</div>
+<!-- Environmental & Telemetry Stream (Chart & Sensor Array) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md lg:p-space-lg shadow-lg">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-space-sm gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">show_chart</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Diurnal Transpiration &amp; Moisture Infiltration</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">24-hour comparative sensor graph across Root Zone B vs Foliar Canopy.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-3 h-3 rounded-sm bg-secondary"></span> Moisture %
+              </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-3 h-3 rounded-sm bg-tertiary-fixed-dim"></span> Canopy Temp
+              </span>
+</div>
+</div>
+<!-- Tactile Chart Simulation -->
+<div class="w-full bg-surface-container-low rounded-lg p-space-sm mt-space-xs shadow-inner">
+<div class="h-44 w-full flex items-end justify-between gap-1 sm:gap-2 pt-6 pb-2 px-1">
+<!-- Hourly data columns with tactile dual bars -->
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 48%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 30%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">04:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 52%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 34%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">06:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 64%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 44%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">08:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 78%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 65%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">10:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 82%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 76%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">12:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 75%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 85%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">14:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 70%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 80%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">16:00</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+<div class="w-full max-w-[18px] bg-secondary rounded-t shadow-sm transition-all group-hover:brightness-95" style="height: 65%;"></div>
+<div class="w-full max-w-[18px] bg-tertiary-fixed-dim rounded-t shadow-sm" style="height: 62%;"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">18:00</span>
+</div>
+</div>
+</div>
+<!-- Bottom Micro-metrics in dot ledger format -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm mt-space-sm pt-space-xs font-label-sm text-label-sm">
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between">
+<span class="text-on-surface-variant">Max Canopy Temp:</span>
+<span class="font-bold text-primary">76.4°F (13:42)</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between">
+<span class="text-on-surface-variant">Mean Infiltration:</span>
+<span class="font-bold text-secondary">+3.8 mm/h</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between">
+<span class="text-on-surface-variant">PAR Radiation Peak:</span>
+<span class="font-bold text-primary">1,420 µmol/m²s</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Control Boxes, UAV Surveillance & Harvest Milestones (4 cols) -->
+<div class="lg:col-span-4 space-y-space-md">
+<!-- Tactile Irrigation Valve Control Console -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">water_ph</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Hydraulic Control</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold animate-pulse">
+              PUMP 01 ACTIVE
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+            Mainline pressure: <strong class="text-primary font-bold">44.2 PSI</strong> · Total flow: 120 GPM.
+          </p>
+<!-- Interactive Valve Switches -->
+<div class="space-y-space-xs">
+<!-- Valve Row 1 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-primary font-bold">Valve A-1 (Tomatoes)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Schedule: 22m remaining</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-secondary p-0.5 transition-colors shadow-inner flex items-center" onclick="this.classList.toggle('bg-secondary'); this.classList.toggle('bg-surface-container-highest');">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-md transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Valve Row 2 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-primary font-bold">Valve B-3 (Peppers)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Next cycle: 17:30 UTC</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-surface-container-highest p-0.5 transition-colors shadow-inner flex items-center" onclick="this.classList.toggle('bg-secondary'); this.classList.toggle('bg-surface-container-highest');">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-md transform translate-x-0.5 transition-transform"></div>
+</button>
+</div>
+<!-- Valve Row 3 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-primary font-bold">Valve C-2 (Strawberries)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Schedule: Continuous pulse</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-secondary p-0.5 transition-colors shadow-inner flex items-center" onclick="this.classList.toggle('bg-secondary'); this.classList.toggle('bg-surface-container-highest');">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-md transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Fertigation Mix: Bio-N Boost</span>
+<button class="text-secondary font-bold hover:underline flex items-center gap-1">
+              Calibrate <span class="material-symbols-outlined text-[14px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Autonomous UAV Aerial Survey Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">flight</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">UAV Sector Patrol</h4>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold -rotate-1">
+              NDVI 0.88
+            </span>
+</div>
+<!-- UAV Map / Aerial View -->
+<div class="w-full h-44 rounded-lg overflow-hidden relative shadow-sm my-2">
+<div class="w-full h-full bg-cover bg-center" data-location="Valley Ridge Farm, Agricultural Plot Drone Orthomosaic" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg')"></div>
+<!-- Overlay Crosshair & Mission Badge -->
+<div class="absolute inset-0 bg-primary/20 pointer-events-none flex items-center justify-center">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-on-primary flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 px-2 py-1 rounded text-primary font-label-sm text-label-sm shadow-sm">
+              Drone #04 · Orthomosaic Pass 92%
+            </div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Multispectral scan completed 14 minutes ago. Zero pest anomalies detected in high-density strawberry rows.
+          </p>
+<button class="w-full mt-space-sm py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md shadow-sm transition-all active:translate-y-0.5 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">satellite_alt</span>
+            Inspect Multispectral Layer
+          </button>
+</div>
+<!-- Field Milestones & Upcoming Harvest Ledger -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">event_note</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Harvest Timetable</h4>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Cycle 2025.2</span>
+</div>
+<div class="divide-y divide-surface-container-high mt-2">
+<!-- Row 1 -->
+<div class="py-2.5 flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-primary font-bold">Romaine Lettuce Batch #09</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Plot 1B · Yield Est: 2,400 Heads</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold shrink-0">
+                OCT 26
+              </span>
+</div>
+<!-- Row 2 -->
+<div class="py-2.5 flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-primary font-bold">Cherokee Purple Tomatoes</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Plot 1A · First selective picking</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-surface-container text-primary font-label-sm text-label-sm font-bold shrink-0">
+                NOV 03
+              </span>
+</div>
+<!-- Row 3 -->
+<div class="py-2.5 flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-primary font-bold">Golden Sweet Corn (Row A-F)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Plot 2B · Grain filling stage</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-surface-container text-primary font-label-sm text-label-sm font-bold shrink-0">
+                NOV 12
+              </span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<a class="w-full py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm transition-all shadow-md hover:bg-primary-container flex items-center justify-center gap-1" href="#">
+<span>View Full Farm Master Schedule</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for the quick action button
+  const valveBtn = document.getElementById('valve-btn');
+  if (valveBtn) {
+    valveBtn.addEventListener('click', () => {
+      const isAutomated = valveBtn.getAttribute('data-automated') === 'true';
+      if (!isAutomated) {
+        valveBtn.setAttribute('data-automated', 'true');
+        valveBtn.classList.remove('bg-secondary');
+        valveBtn.classList.add('bg-primary-container');
+        valveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> Valves Running (Auto)';
+      } else {
+        valveBtn.setAttribute('data-automated', 'false');
+        valveBtn.classList.remove('bg-primary-container');
+        valveBtn.classList.add('bg-secondary');
+        valveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">valve</span> Automate Valves';
+      }
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t-[3px] border-primary shadow-[0_-4px_0_0_#012d1d] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter pb-space-lg border-b-2 border-primary/20"><div class="space-y-space-xs"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[20px]">verified</span><h4 class="font-headline-sm text-headline-sm text-primary">Verified Ledger</h4></div><p class="font-body-sm text-body-sm text-on-surface-variant">All plot entries, nitrogen readings, and crop cycles recorded on immutable ledger node #4092-A.</p></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Telemetry Mesh</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Soil Moisture: 34.2% (Nominal)</li><li>Canopy Index: 0.82 NDVI</li><li>Solar Array: 4.8 kW Gen</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Dispatch Protocols</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Drip Irrigation Sector B: Active</li><li>Automated Weeding Drone: Docked</li><li>Frost Advisory Alert: Clear</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Field Log System</h5><p class="font-body-sm text-body-sm text-on-surface-variant">CraveQuest AgroTech Engine · Handcrafted with tactile paper-and-stamp feedback.</p><div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md border border-primary"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-primary font-bold">FARM RUNTIME OK</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><div>© 2025 GREEN LOOP AGROTECH LTD. · RECORDED IN FIELD JOURNAL ARCHIVE</div><div class="flex items-center gap-space-md"><span>PARCEL ID: VRF-774</span><span>LAT: 44.9778° N</span><span>LON: 93.2650° W</span></div></div></div></footer></body></html>
+
+<!-- Green Loop - Farm & Plot Management (CraveQuest Style) -->
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Green Loop - AgroTech Field Journal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}body{background-image:linear-gradient(to right,#e2ead8 1px,transparent 1px),linear-gradient(to bottom,#e2ead8 1px,transparent 1px);background-size:24px 24px;background-color:#f6fbf4;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#c4a24c", "outline-variant": "#c1c8c2", "primary": "#012d1d", "primary-fixed": "#c1ecd4", "on-secondary-fixed": "#002113", "surface-dim": "#d7dbd5", "tertiary-container": "#4c3900", "on-primary": "#ffffff", "on-surface": "#181d19", "inverse-primary": "#a5d0b9", "secondary-fixed": "#92f7c3", "surface": "#f6fbf4", "surface-container": "#ebefe8", "background": "#f6fbf4", "on-background": "#181d19", "on-primary-container": "#86af99", "tertiary-fixed": "#ffdf96", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-primary-fixed": "#002114", "secondary": "#006c48", "inverse-on-surface": "#edf2eb", "on-secondary-fixed-variant": "#005235", "inverse-surface": "#2d322d", "on-error": "#ffffff", "surface-bright": "#f6fbf4", "on-tertiary-fixed": "#251a00", "surface-container-high": "#e5e9e3", "secondary-container": "#92f7c3", "tertiary-fixed-dim": "#e7c268", "on-tertiary-fixed-variant": "#5a4400", "surface-tint": "#3f6653", "on-surface-variant": "#414844", "primary-container": "#1b4332", "tertiary": "#322400", "surface-container-lowest": "#ffffff", "surface-container-highest": "#dfe4dd", "surface-variant": "#dfe4dd", "surface-container-low": "#f0f5ee", "on-primary-fixed-variant": "#274e3d", "on-error-container": "#93000a", "on-secondary": "#ffffff", "on-secondary-container": "#00734d", "secondary-fixed-dim": "#75daa8", "error": "#ba1a1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1.5rem", "gutter": "1.25rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter-mobile": "0.75rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-sm": ["Bricolage Grotesque"], "headline-lg-mobile": ["Bricolage Grotesque"], "headline-md": ["Bricolage Grotesque"], "display-lg": ["Bricolage Grotesque"], "label-sm": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Bricolage Grotesque"], "label-md": ["Space Grotesk"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Bricolage Grotesque"], "label-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-lg-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-[2.5px] border-primary shadow-[0_4px_0_0_#012d1d]"><div class="h-20 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-secondary text-[24px]">potted_plant</span></div><div><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">GREEN LOOP</span><span class="px-space-xs py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary -rotate-2 shadow-[1px_1px_0px_#012d1d]">V2.4</span></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AgroTech Field Journal</p></div></div><div class="hidden xl:flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface border-2 border-primary rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-[3px_3px_0px_#006c48] transition-all" placeholder="Search parcels, crops, telemetry..." type="text"/></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="hidden md:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-secondary text-[16px]">agriculture</span><span class="font-label-md text-label-md text-primary font-bold">Valley Ridge Farm</span></div><div class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-fixed border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-secondary-fixed font-bold uppercase">48 Nodes Online</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="bg-surface-container-low border-t-2 border-primary px-margin lg:px-margin-desktop overflow-x-auto"><div class="max-w-7xl mx-auto flex items-center justify-between"><nav class="flex items-center gap-space-xs py-2" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[3px_3px_0px_#012d1d] -translate-y-0.5"><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="dashboard-operations" href="#">Dashboard &amp; Operations</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="farm-plot-management" href="#">Farm &amp; Plot Management</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="crop-cycles-cultivation" href="#">Crop Cycles &amp; Cultivation</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="harvest-quality-assessment" href="#">Harvest &amp; Quality Assessment</a></nav><div class="hidden lg:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">sync</span><span>Syncing Telemetry Mesh</span></div></div></div></header><main class="w-full pt-28 bg-transparent min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Style Helpers -->
+<style>
+    .brutal-shadow { box-shadow: 4px 4px 0px #012d1d; }
+    .brutal-shadow-sm { box-shadow: 2.5px 2.5px 0px #012d1d; }
+    .brutal-shadow-lg { box-shadow: 6px 6px 0px #012d1d; }
+    .brutal-shadow-amber { box-shadow: 4px 4px 0px #c4a24c; }
+    .washi-tape {
+      background: repeating-linear-gradient(45deg, rgba(226, 234, 216, 0.7), rgba(226, 234, 216, 0.7) 10px, rgba(246, 251, 244, 0.9) 10px, rgba(246, 251, 244, 0.9) 20px);
+    }
+  </style>
+<div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg w-full">
+<!-- Top Cadastral Ledger Strip / Title Billboard -->
+<div class="relative bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl border-[2.5px] border-primary brutal-shadow mb-space-lg overflow-hidden">
+<!-- Decorative Stationery Mask Pins / Stamp Badges -->
+<div class="absolute -top-3 left-12 washi-tape px-6 py-1 border-[1.5px] border-primary/40 rotate-[-1.5deg] shadow-sm z-10">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase font-bold">LEDGER VOL. 18 / CADASTRE SECTION 04</span>
+</div>
+<div class="absolute -right-3 -top-3 bg-tertiary-fixed border-2 border-primary px-4 py-1.5 rotate-[4deg] brutal-shadow-sm z-10 hidden sm:flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-primary font-bold tracking-tight">ORBITAL SYNCHRONIZED</span>
+</div>
+<div class="pt-space-xs flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-2.5 py-0.5 rounded bg-primary-fixed border border-primary font-label-sm text-label-sm text-primary font-bold">VRF-CADASTRE</span>
+<span class="text-outline font-label-sm text-label-sm">●</span>
+<span class="font-label-md text-label-md text-secondary font-bold tracking-wide">PRECISION AG-GRID MESH</span>
+</div>
+<h1 class="font-display-lg text-headline-lg lg:text-display-lg text-primary tracking-tight leading-none">
+            Parcels &amp; Microclimate Zones
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Telemetry-monitored agricultural sectors comprising <strong class="text-primary font-bold">240.5 gross productive acres</strong> across 6 localized biological microclimates. Connected via dual-band LoRaWAN &amp; subterranean moisture arrays.
+          </p>
+</div>
+<!-- Ledger Quick Metric & Primary Actions -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container border-2 border-primary font-label-md text-label-md text-primary font-bold brutal-shadow-sm hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-[20px] text-secondary">satellite_alt</span>
+<span>Sync GIS Nodes</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-lowest border-2 border-primary font-label-md text-label-md text-primary font-bold brutal-shadow-sm hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span>Export Cadastre</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary border-[2.5px] border-primary font-label-lg text-label-lg font-bold brutal-shadow hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 transition-transform">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+<span>+ Add New Plot</span>
+</button>
+</div>
+</div>
+<!-- Micro Ledger Tape Ribbon -->
+<div class="mt-space-md pt-space-sm border-t-2 border-dashed border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<span>SURVEY STAMP: #VRF-2025-Q2</span>
+<span class="hidden sm:inline">COORDINATES: 44.9778° N, 93.2650° W</span>
+<span>ELEVATION: 312M ASL</span>
+</div>
+<div class="flex items-center gap-2 bg-secondary-fixed/70 px-2.5 py-0.5 rounded border border-primary text-on-secondary-fixed font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>48 OF 48 SENSOR STATIONS LIVE</span>
+</div>
+</div>
+</div>
+<!-- Category Filter Tabs & Status Pill Toolbar -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm mb-space-md">
+<!-- Index Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+<button class="px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold border-2 border-primary brutal-shadow-sm flex items-center gap-2 shrink-0">
+<span>All Plots</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">6</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium border-2 border-primary brutal-shadow-sm flex items-center gap-2 shrink-0 transition-all">
+<span>Greenhouse Enclosures</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-primary text-[11px] font-bold">2</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium border-2 border-primary brutal-shadow-sm flex items-center gap-2 shrink-0 transition-all">
+<span>Open Farmland</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-primary text-[11px] font-bold">3</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium border-2 border-primary brutal-shadow-sm flex items-center gap-2 shrink-0 transition-all">
+<span>Orchard</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-primary text-[11px] font-bold">1</span>
+</button>
+</div>
+<!-- Quick Switcher Tools -->
+<div class="flex items-center gap-2 shrink-0 self-end sm:self-auto">
+<div class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-lowest border-2 border-primary font-label-sm text-label-sm text-primary font-bold brutal-shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">tune</span>
+<span>SORT: VIGOR INDEX</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-tertiary-fixed border-2 border-primary font-label-sm text-label-sm text-on-tertiary-fixed font-bold brutal-shadow-sm">
+<span class="material-symbols-outlined text-[16px]">sensors</span>
+<span>MESH 100% HEALTH</span>
+</div>
+</div>
+</div>
+<!-- 6 Detailed Plot Cards (Specimen Cards Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-space-xl">
+<!-- SPECIMEN 01: North Ridge Greenhouse 01 -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<!-- Floating Specimen Washi Tag -->
+<div class="absolute -top-3 right-4 bg-tertiary-fixed border-2 border-primary px-3 py-0.5 rotate-[2deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #01</span>
+</div>
+<div>
+<!-- Specimen Photo & Overlay Status Badges -->
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High-tech hydroponic commercial greenhouse interior filled with lush green vine tomatoes climbing vertical trellises, warm ambient morning sunlight, high precision misting tubes, neo-brutalist Japanese agricultural catalog styling, rich forest greens and natural wood accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMi8Hl3DImtp0DTXK2ATUYzUSntwN9F-Blhd5U2ZH2fgDHB4KMEsrnP7dq4uUIwlvi0CB3PXJPqk41drhSv5HWWtxJnFu394dhP-bJzanrCIk423F-5G5KGoJkkizi61rxmIvHvA1cEHxgZwBpT3j2YhVp_V1KATk7us8sP5TyxeT-xcgjnUxd_K-8cWx2hCqPnLo72p0tVWi-E5hRFUYoiHTytlyHdat4V_TtgvR62e7TyCRYaB_tlQ"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                42.0 ACRES • ENCLOSED
+              </span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed border border-primary font-label-sm text-label-sm text-on-secondary-fixed font-bold shadow-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> CLIMATE STABLE
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              98% <span class="text-[10px] font-label-sm tracking-widest uppercase">VIGOR</span>
+</div>
+</div>
+<!-- Parcel Identity & Crop -->
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR NORTH-01A</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.1 • ROCKWOOL</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">North Ridge Greenhouse 01</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Hydroponic Beefsteak Tomatoes (Solanum lycopersicum)</p>
+</div>
+<!-- Specimen Sensor Dials (Mini Ledgers) -->
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">82.4%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Nitrogen</span>
+<span class="font-bold text-primary text-[14px]">142 ppm</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">To Harvest</span>
+<span class="font-bold text-secondary text-[14px]">12 Days</span>
+</div>
+</div>
+</div>
+<!-- Card Footprint & Toggle Switch -->
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Automated Misting</span>
+</div>
+<!-- Tactile Neo-Brutalist Toggle Button -->
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-secondary border-2 border-primary shadow-inner">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- SPECIMEN 02: East Terrace Open Soil -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div class="absolute -top-3 right-4 bg-secondary-fixed border-2 border-primary px-3 py-0.5 rotate-[-1.5deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #02</span>
+</div>
+<div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Expansive open agricultural field with tall golden sweet corn crops, rolling terrace topography, blue summer skies with geometric cloud shapes, clean tractor tire lines, Japanese technical botanical illustration feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt3Re4kEJzFfECtVOB_FO0Zc8AbcShAF5yh-fJnzGR6rWrZJG20Tj7v8dvX2fwV3099dEf7u84B4-DGfU3Oe6duEKdzF5iJBEdHP1Chh1uXLibWr4gn_Nx5uMa3Nj3Djq0pw5ISGkPHRfmVfrJQYvUtrmxX59NN04Akkfpic4rFxgJn_m3EdcBxJ5FF50xD3R-boNzCjldIAEmiNRYRJZoiJZ_l_qp-yPbAhzBr9GeU8WP6kZb_9McAQ"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                68.2 ACRES • ALLUVIAL
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed border border-primary font-label-sm text-label-sm text-on-primary-fixed font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">wifi_tethering</span> LORAWAN ACTIVE
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              89% <span class="text-[10px] font-label-sm tracking-widest uppercase">VIGOR</span>
+</div>
+</div>
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR EAST-04B</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.4 • SANDY LOAM</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">East Terrace Open Soil</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Sweet Corn 'Golden Bantam' (Zea mays var. saccharata)</p>
+</div>
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">54.1%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Nitrogen</span>
+<span class="font-bold text-primary text-[14px]">96 ppm</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">To Harvest</span>
+<span class="font-bold text-secondary text-[14px]">34 Days</span>
+</div>
+</div>
+</div>
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Pivot Line Pivot-E</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-secondary border-2 border-primary shadow-inner">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- SPECIMEN 03: South Orchard Tier -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div class="absolute -top-3 right-4 bg-tertiary-fixed-dim border-2 border-primary px-3 py-0.5 rotate-[3deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #03</span>
+</div>
+<div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Orderly hillside apple orchard with heavily laden branches of red organic gala apples, drip irrigation lines running along the base of pruned trees, warm afternoon sun, textured agricultural paper print aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoOboOmFacRiFOl-zGKPqXWxBB2W3QxUCfeNrBEO07ThDqmXUAEHquzihgKAcsdyqU6MQRWcoJJwlTuiy4nnBJ49bZicWzc3rSLk5gdc-jiJKbZeuyEI6pHnUUbswmG7l1jXATH-p2mJQjz7UfpqWOWke2zwjN8RfyqHj8UUkG-Afg5719i0dcRV6B8pnsmbXBUeZ_i5Als67-F190ANDrH2daYe8MC2tiHDiSweRUeTkSwMi2i5jNog"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                55.0 ACRES • SLOPED TIER
+              </span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">wb_sunny</span> BRIX 14.8°
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              94% <span class="text-[10px] font-label-sm tracking-widest uppercase">YIELD</span>
+</div>
+</div>
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR SOUTH-02</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.8 • SILT CLAY</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">South Orchard Tier</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Organic Gala &amp; Honeycrisp Apples (Malus domestica)</p>
+</div>
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">61.8%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Nitrogen</span>
+<span class="font-bold text-primary text-[14px]">110 ppm</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">To Harvest</span>
+<span class="font-bold text-secondary text-[14px]">19 Days</span>
+</div>
+</div>
+</div>
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Micro-Sprinklers</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-secondary border-2 border-primary shadow-inner">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- SPECIMEN 04: Valley Floor Alluvial Bed -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div class="absolute -top-3 right-4 bg-primary-fixed border-2 border-primary px-3 py-0.5 rotate-[-2deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #04</span>
+</div>
+<div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Dense green rows of vibrant young baby spinach and wild baby arugula on dark rich alluvial river soil, precision automated sprinkler heads, organic farming, crisp morning mist, botanical ledger photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDAG-p57NsbWvoQx7MK-neI0AauMyKuoXfBvpQHn7Azbj3hzSVfPjslekI_jN2MRt6Dc1kWkR74TNW0SEYN7ytdtEufX8z2jj11VCGbBJ0yfNoMA8cz_E_xqZzkAP4UxoqDbguQWxZBOsyC4PhOObZ2D6hNwlvaKjI8kU3zRrWy4Hn_pW4Pz7I1bC_M3wGBtiz5qQhkBm6LaUiok4xfOX42mOanby2LNkBZQRVPAI3erWp0zKZW8LMbQ"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                32.5 ACRES • VALLEY BASIN
+              </span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed border border-primary font-label-sm text-label-sm text-on-secondary-fixed font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">water_drop</span> SUB-SURFACE DRIP
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              91% <span class="text-[10px] font-label-sm tracking-widest uppercase">VIGOR</span>
+</div>
+</div>
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR BASIN-03</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.6 • ALLUVIAL HUMUS</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">Valley Floor Alluvial Bed</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Bloomsdale Spinach &amp; Baby Salad Greens</p>
+</div>
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">78.3%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Nitrogen</span>
+<span class="font-bold text-primary text-[14px]">165 ppm</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">To Harvest</span>
+<span class="font-bold text-secondary text-[14px]">6 Days</span>
+</div>
+</div>
+</div>
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Zone Drip Active</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-secondary border-2 border-primary shadow-inner">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- SPECIMEN 05: West Mesa Fallow Field -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div class="absolute -top-3 right-4 bg-tertiary-fixed border-2 border-primary px-3 py-0.5 rotate-[1deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #05</span>
+</div>
+<div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Dense carpet of flowering crimson clover and winter vetch cover crops covering undulating prairie hills, soil regeneration zone, soft diffused lighting, neo-brutalist graphic farm layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1vnGC6afhe9CjOIUx1ATeFj4izaVYZjvusFocMnw6tEXhH7bhlAryywD0QwN-QR7lxBLcoCIsX5hmF12y6S2KtIq0O89h_W5RytgYa3a9jMAQkyE3h9pzqMWmvgFV_kaAlXz0givxNRRW8h3XefXl_3Lu_QC4jZj5ePHz2nrb5tycpmEtGM4X81K6J8H83ETjUiBp6WWLOrFqkg6jfBzwqarjphQ4R1uAxVzTF3r7JZyR6YG0xmPBQ"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                30.0 ACRES • RECHARGE
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">compost</span> CARBON RECHARGE
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary-container text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              72% <span class="text-[10px] font-label-sm tracking-widest uppercase">CYCLE</span>
+</div>
+</div>
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR MESA-06</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.9 • VOLCANIC ASH</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">West Mesa Fallow Field</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Crimson Clover (Trifolium incarnatum) &amp; Vetch Cover</p>
+</div>
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">48.2%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Biomass</span>
+<span class="font-bold text-primary text-[14px]">4.2 t/ac</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Till Date</span>
+<span class="font-bold text-outline text-[14px]">45 Days</span>
+</div>
+</div>
+</div>
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Resting Soil Phase</span>
+</div>
+<!-- Inactive Toggle -->
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-surface-container-highest border-2 border-primary shadow-inner">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- SPECIMEN 06: High Tunnel Alpha -->
+<div class="group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-4 brutal-shadow hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div class="absolute -top-3 right-4 bg-tertiary-fixed-dim border-2 border-primary px-3 py-0.5 rotate-[-1deg] brutal-shadow-sm z-10 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-black uppercase">SPECIMEN #06</span>
+</div>
+<div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden border-2 border-primary mb-3 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Polyethylene high tunnel hoop house greenhouse loaded with colorful bell peppers in yellow red and green, sensor wiring, ventilation fan visible, neo-brutalist Japanese agricultural field journal aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEz4jlUHU5AaEuxK4voDTKIck8azpZ-lCFDdraO_-7uncuGuGFmsT6N5JatU2Ylmi80AP8vI9P0nNp50JJh3oEQzToDk9SuqXg4EVas3WdWgnma-edErZwgG92Z0CZvao3_QlWVqNT8VidM98DJZGGyjBChG3XZrU74VqSH0JgqCqOjxtdIt5dst_w0SzBVv6q6b3zlqbDtbP9JkGIlGx0Srh-LBQ164sDu7E7-i70WCimtgaxxwoX3g"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/95 border border-primary font-label-sm text-label-sm text-primary font-bold shadow-sm">
+                12.8 ACRES • SEMI-ENCLOSED
+              </span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed border border-primary font-label-sm text-label-sm text-on-secondary-fixed font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">air</span> VENT SERVO ACTIVE
+              </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary px-2.5 py-1 rounded border border-primary font-headline-sm text-headline-sm leading-none shadow-md">
+              92% <span class="text-[10px] font-label-sm tracking-widest uppercase">VIGOR</span>
+</div>
+</div>
+<div class="mb-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">SECTOR TUNNEL-01</span>
+<span class="font-label-sm text-label-sm text-outline">pH 6.3 • SANDY SILT</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-0.5">High Tunnel Alpha</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Tricolor Bell Peppers (Capsicum annuum)</p>
+</div>
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-2 rounded-lg border border-primary/50 mb-3 font-label-sm text-label-sm">
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Moisture</span>
+<span class="font-bold text-primary text-[14px]">71.0%</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">Nitrogen</span>
+<span class="font-bold text-primary text-[14px]">128 ppm</span>
+</div>
+<div class="text-center p-1 bg-surface-container-lowest rounded border border-primary/20">
+<span class="text-outline text-[10px] block uppercase">To Harvest</span>
+<span class="font-bold text-secondary text-[14px]">15 Days</span>
+</div>
+</div>
+</div>
+<div class="pt-2 border-t-2 border-dashed border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Roof Louvre Servo</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-secondary border-2 border-primary shadow-inner">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-surface-container-lowest border border-primary transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Soil Nutrients Overview & Batch Agronomy -->
+<div class="relative bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl border-[2.5px] border-primary brutal-shadow">
+<!-- Top Strip with Washi Tape Title -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<div class="inline-flex items-center gap-2 washi-tape px-3 py-1 border border-primary/40 rotate-[-1deg] mb-1">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">LABORATORY ASSAY #SOIL-8842</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            Soil Nutrients Overview &amp; Batch Agronomy
+          </h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last Spectrometry Probe:</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-primary font-label-sm text-label-sm font-bold text-primary">06:45 AM (TODAY)</span>
+</div>
+</div>
+<!-- Recommendation Trigger Alert Banner -->
+<div class="bg-tertiary-fixed/40 border-2 border-primary rounded-lg p-space-md mb-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed border-2 border-primary flex items-center justify-center shrink-0 brutal-shadow-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">science</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wide">CALIBRATED RECOMMENDATION TRIGGER</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container border border-error font-label-sm text-label-sm font-bold">ACTION ADVISED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Available Nitrogen in Sector Basin-03 elevated beyond standard threshold. Rebalancing compost tea dosage in Sector East-04B scheduled for next dawn cycle.
+            </p>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg border-2 border-primary font-label-md text-label-md font-bold brutal-shadow-sm hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 transition-transform shrink-0">
+          Apply Batch Recalibration
+        </button>
+</div>
+<!-- Nutrient Gauges & Dial Cards (4-Column Bento) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-md">
+<!-- Metric 1: Available Nitrogen -->
+<div class="bg-surface-container-low p-4 rounded-xl border-2 border-primary brutal-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">
+<span>Nitrogen (NO₃-N)</span>
+<span class="text-secondary font-bold">OPTIMAL</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[44px] font-black text-primary leading-none">42</span>
+<span class="font-label-md text-label-md text-outline font-bold">ppm</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Target envelope: 35 – 50 ppm across active vegetative rows.</p>
+</div>
+<!-- Brutalist mini progress bar -->
+<div class="w-full bg-surface-container-highest h-3 rounded-full border border-primary mt-4 overflow-hidden p-0.5">
+<div class="bg-secondary h-full rounded-full" style="width: 74%;"></div>
+</div>
+</div>
+<!-- Metric 2: Available Phosphorus -->
+<div class="bg-surface-container-low p-4 rounded-xl border-2 border-primary brutal-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">
+<span>Phosphorus (P)</span>
+<span class="text-secondary font-bold">BALANCED</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[44px] font-black text-primary leading-none">28</span>
+<span class="font-label-md text-label-md text-outline font-bold">ppm</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">High root development stability with mycorrhizal inoculant.</p>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full border border-primary mt-4 overflow-hidden p-0.5">
+<div class="bg-secondary h-full rounded-full" style="width: 62%;"></div>
+</div>
+</div>
+<!-- Metric 3: Soluble Potassium -->
+<div class="bg-surface-container-low p-4 rounded-xl border-2 border-primary brutal-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">
+<span>Potassium (K)</span>
+<span class="text-primary font-bold">STRONG</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[44px] font-black text-primary leading-none">190</span>
+<span class="font-label-md text-label-md text-outline font-bold">ppm</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Sufficient for heavy bloom retention across South Orchard.</p>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full border border-primary mt-4 overflow-hidden p-0.5">
+<div class="bg-secondary h-full rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+<!-- Metric 4: Biological Index -->
+<div class="bg-primary-container text-on-primary p-4 rounded-xl border-2 border-primary brutal-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-secondary-fixed uppercase mb-2 font-bold">
+<span>Soil Biological Index</span>
+<span class="bg-secondary px-1.5 py-0.5 rounded text-white text-[10px]">EXCELLENT</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[44px] font-black text-white leading-none">94.2</span>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">/ 100</span>
+</div>
+<p class="font-body-sm text-body-sm text-primary-fixed mt-2">Active microbial respiration: 8.4 mg CO₂-C/kg per day.</p>
+</div>
+<div class="w-full bg-primary h-3 rounded-full border border-primary-fixed mt-4 overflow-hidden p-0.5">
+<div class="bg-secondary-fixed h-full rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+</div>
+<!-- Ledger Footer Table / Log Entry Row -->
+<div class="border-2 border-primary rounded-lg overflow-x-auto bg-surface-container-lowest">
+<div class="min-w-[680px]">
+<div class="grid grid-cols-5 bg-surface-container py-2.5 px-4 border-b-2 border-primary font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">
+<span>PARCEL SPECIMEN</span>
+<span>DOMINANT SOIL TYPE</span>
+<span>ORGANIC MATTER</span>
+<span>CALCIUM/MAGNESIUM RATIO</span>
+<span class="text-right">DISPATCH PROTOCOL</span>
+</div>
+<div class="divide-y border-outline-variant font-body-sm text-body-sm">
+<div class="grid grid-cols-5 py-2.5 px-4 items-center bg-surface-container-lowest">
+<span class="font-bold text-primary">#01 North Ridge GH-01</span>
+<span>Rockwool + Coco Blend</span>
+<span>N/A (Hydroponic)</span>
+<span>3.2 : 1.0 (Buffered)</span>
+<span class="text-right font-label-sm text-label-sm font-bold text-secondary">ACTIVE DOSING</span>
+</div>
+<div class="grid grid-cols-5 py-2.5 px-4 items-center bg-surface-container-low">
+<span class="font-bold text-primary">#02 East Terrace Open</span>
+<span>Fine Sandy Loam</span>
+<span>4.8% OM</span>
+<span>5.4 : 1.0 (Standard)</span>
+<span class="text-right font-label-sm text-label-sm font-bold text-primary">SCHEDULED</span>
+</div>
+<div class="grid grid-cols-5 py-2.5 px-4 items-center bg-surface-container-lowest">
+<span class="font-bold text-primary">#03 South Orchard Tier</span>
+<span>Silt Clay Loam</span>
+<span>5.6% OM</span>
+<span>6.1 : 1.0 (Rich)</span>
+<span class="text-right font-label-sm text-label-sm font-bold text-secondary">CALIBRATED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Client Behavior for Tabs and Toggles -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Interactive card toggles
+      const toggleButtons = document.querySelectorAll('button:has(span[class*="translate-x"])');
+      toggleButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const circle = btn.querySelector('span');
+          const isToggled = circle.classList.contains('translate-x-6');
+          
+          if (isToggled) {
+            circle.classList.remove('translate-x-6');
+            circle.classList.add('translate-x-1');
+            btn.classList.remove('bg-secondary');
+            btn.classList.add('bg-surface-container-highest');
+          } else {
+            circle.classList.remove('translate-x-1');
+            circle.classList.add('translate-x-6');
+            btn.classList.remove('bg-surface-container-highest');
+            btn.classList.add('bg-secondary');
+          }
+        });
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t-[3px] border-primary shadow-[0_-4px_0_0_#012d1d] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter pb-space-lg border-b-2 border-primary/20"><div class="space-y-space-xs"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[20px]">verified</span><h4 class="font-headline-sm text-headline-sm text-primary">Verified Ledger</h4></div><p class="font-body-sm text-body-sm text-on-surface-variant">All plot entries, nitrogen readings, and crop cycles recorded on immutable ledger node #4092-A.</p></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Telemetry Mesh</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Soil Moisture: 34.2% (Nominal)</li><li>Canopy Index: 0.82 NDVI</li><li>Solar Array: 4.8 kW Gen</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Dispatch Protocols</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Drip Irrigation Sector B: Active</li><li>Automated Weeding Drone: Docked</li><li>Frost Advisory Alert: Clear</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Field Log System</h5><p class="font-body-sm text-body-sm text-on-surface-variant">CraveQuest AgroTech Engine · Handcrafted with tactile paper-and-stamp feedback.</p><div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md border border-primary"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-primary font-bold">FARM RUNTIME OK</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><div>© 2025 GREEN LOOP AGROTECH LTD. · RECORDED IN FIELD JOURNAL ARCHIVE</div><div class="flex items-center gap-space-md"><span>PARCEL ID: VRF-774</span><span>LAT: 44.9778° N</span><span>LON: 93.2650° W</span></div></div></div></footer></body></html>
+
+<!-- Green Loop - Crop Cycles & Cultivation (CraveQuest Style) -->
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Green Loop - AgroTech Field Journal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}body{background-image:linear-gradient(to right,#e2ead8 1px,transparent 1px),linear-gradient(to bottom,#e2ead8 1px,transparent 1px);background-size:24px 24px;background-color:#f6fbf4;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#c4a24c", "outline-variant": "#c1c8c2", "primary": "#012d1d", "primary-fixed": "#c1ecd4", "on-secondary-fixed": "#002113", "surface-dim": "#d7dbd5", "tertiary-container": "#4c3900", "on-primary": "#ffffff", "on-surface": "#181d19", "inverse-primary": "#a5d0b9", "secondary-fixed": "#92f7c3", "surface": "#f6fbf4", "surface-container": "#ebefe8", "background": "#f6fbf4", "on-background": "#181d19", "on-primary-container": "#86af99", "tertiary-fixed": "#ffdf96", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-primary-fixed": "#002114", "secondary": "#006c48", "inverse-on-surface": "#edf2eb", "on-secondary-fixed-variant": "#005235", "inverse-surface": "#2d322d", "on-error": "#ffffff", "surface-bright": "#f6fbf4", "on-tertiary-fixed": "#251a00", "surface-container-high": "#e5e9e3", "secondary-container": "#92f7c3", "tertiary-fixed-dim": "#e7c268", "on-tertiary-fixed-variant": "#5a4400", "surface-tint": "#3f6653", "on-surface-variant": "#414844", "primary-container": "#1b4332", "tertiary": "#322400", "surface-container-lowest": "#ffffff", "surface-container-highest": "#dfe4dd", "surface-variant": "#dfe4dd", "surface-container-low": "#f0f5ee", "on-primary-fixed-variant": "#274e3d", "on-error-container": "#93000a", "on-secondary": "#ffffff", "on-secondary-container": "#00734d", "secondary-fixed-dim": "#75daa8", "error": "#ba1a1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1.5rem", "gutter": "1.25rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter-mobile": "0.75rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-sm": ["Bricolage Grotesque"], "headline-lg-mobile": ["Bricolage Grotesque"], "headline-md": ["Bricolage Grotesque"], "display-lg": ["Bricolage Grotesque"], "label-sm": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Bricolage Grotesque"], "label-md": ["Space Grotesk"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Bricolage Grotesque"], "label-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-lg-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-[2.5px] border-primary shadow-[0_4px_0_0_#012d1d]"><div class="h-20 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-secondary text-[24px]">potted_plant</span></div><div><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">GREEN LOOP</span><span class="px-space-xs py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary -rotate-2 shadow-[1px_1px_0px_#012d1d]">V2.4</span></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AgroTech Field Journal</p></div></div><div class="hidden xl:flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface border-2 border-primary rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-[3px_3px_0px_#006c48] transition-all" placeholder="Search parcels, crops, telemetry..." type="text"/></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="hidden md:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-secondary text-[16px]">agriculture</span><span class="font-label-md text-label-md text-primary font-bold">Valley Ridge Farm</span></div><div class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-fixed border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-secondary-fixed font-bold uppercase">48 Nodes Online</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="bg-surface-container-low border-t-2 border-primary px-margin lg:px-margin-desktop overflow-x-auto"><div class="max-w-7xl mx-auto flex items-center justify-between"><nav class="flex items-center gap-space-xs py-2" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[3px_3px_0px_#012d1d] -translate-y-0.5"><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="dashboard-operations" href="#">Dashboard &amp; Operations</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="farm-plot-management" href="#">Farm &amp; Plot Management</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="crop-cycles-cultivation" href="#">Crop Cycles &amp; Cultivation</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="harvest-quality-assessment" href="#">Harvest &amp; Quality Assessment</a></nav><div class="hidden lg:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">sync</span><span>Syncing Telemetry Mesh</span></div></div></div></header><main class="w-full pt-28 bg-transparent min-h-screen"><div class="flex flex-col w-full">
+<!-- Inner Page Container strictly within 1280px grid -->
+<div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg w-full space-y-space-xl">
+<!-- TOP MASTHEAD & HERO ACTION BAR -->
+<div class="relative bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Decorative vintage tape strip -->
+<div class="absolute -top-3 left-8 px-4 py-1 bg-tertiary-fixed text-primary font-label-sm text-label-sm uppercase font-bold tracking-widest shadow-sm -rotate-1 rounded-sm">
+        BATCH TELEMETRY REEL #9942
+      </div>
+<div class="space-y-space-xs pt-2 lg:pt-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+            FIELD MESH ACTIVE
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+            Station Node: VRF-Alpha-09
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Crop Cycles &amp; Field Activity Ledger
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span>Active Agronomic Cycle — <strong>Fall 2025 Production Run</strong></span>
+<span class="text-outline">•</span>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded">USDA-GAP Ledger Node #4092-A</span>
+</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-low text-primary font-label-lg text-label-lg hover:bg-surface-container transition-all flex items-center gap-2 shadow-md" id="quickLogScrollBtn">
+<span class="material-symbols-outlined text-[20px]">flash_on</span>
+<span>Field Mode</span>
+</button>
+<button class="px-5 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg hover:brightness-105 active:scale-95 transition-all flex items-center gap-2 shadow-lg" id="openRecordModal">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+<span>+ Record Field Event</span>
+</button>
+</div>
+</div>
+<!-- PHENOLOGICAL CROP PROGRESSION MATRIX -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Primary Phenology Card: San Marzano Tomatoes (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-lg rounded-xl shadow-xl relative overflow-hidden flex flex-col justify-between">
+<!-- Floating Stamp Badge -->
+<div class="absolute top-4 right-4 bg-tertiary-fixed text-primary px-3 py-1 rounded shadow-md -rotate-2 font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+          PARCEL: DELTA-4 SECTOR N
+        </div>
+<div>
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md font-bold mb-1">
+<span class="material-symbols-outlined text-[18px]">nature</span>
+            FEATURED PHENOLOGICAL PROFILE
+          </div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-space-md">
+<h2 class="font-headline-md text-headline-md text-primary">
+              San Marzano Plum Tomato
+            </h2>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">
+              Batch #2025-TM-04 • Indeterminate Heirloom
+            </span>
+</div>
+<!-- Progress Headline & Days -->
+<div class="bg-surface-container-low p-space-md rounded-lg mb-space-md flex flex-wrap items-center justify-between gap-4">
+<div>
+<div class="font-label-sm text-label-sm uppercase text-on-surface-variant">Vegetative Stage</div>
+<div class="font-headline-sm text-headline-sm text-primary flex items-baseline gap-2">
+<span>Day 52</span>
+<span class="text-body-sm text-on-surface-variant font-normal">of 85 Expected Days</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest px-3 py-2 rounded-md shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">GDD ACCUMULATED</span>
+<span class="font-headline-sm text-headline-sm text-secondary">1,142 °F</span>
+<span class="font-label-sm text-label-sm text-outline"> / 1,750 Target</span>
+</div>
+<div class="bg-surface-container-lowest px-3 py-2 rounded-md shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">CANOPY INDEX</span>
+<span class="font-headline-sm text-headline-sm text-primary">0.84 NDVI</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Optimal</span>
+</div>
+</div>
+</div>
+<!-- Phenological Step Trackers -->
+<div class="space-y-2">
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 61%;"></div>
+<div class="bg-secondary-fixed h-full" style="width: 14%;"></div>
+<div class="bg-surface-container h-full" style="width: 25%;"></div>
+</div>
+<!-- Stages Grid -->
+<div class="grid grid-cols-6 text-center gap-1 pt-1 font-label-sm text-label-sm">
+<div class="flex flex-col items-center">
+<span class="text-secondary font-bold">✓ Germination</span>
+<span class="text-outline">Days 1-7</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-secondary font-bold">✓ Seedling</span>
+<span class="text-outline">Days 8-20</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-secondary font-bold">✓ Vegetative</span>
+<span class="text-outline">Days 21-42</span>
+</div>
+<div class="flex flex-col items-center bg-secondary-fixed/50 rounded p-1">
+<span class="text-on-secondary-fixed font-bold animate-pulse">• Flowering/Set</span>
+<span class="text-primary font-bold">Day 43-65 (Now)</span>
+</div>
+<div class="flex flex-col items-center opacity-60">
+<span class="text-on-surface">Ripening</span>
+<span class="text-outline">Days 66-78</span>
+</div>
+<div class="flex flex-col items-center opacity-60">
+<span class="text-on-surface">Harvest Run</span>
+<span class="text-outline">Days 79-85</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Matrix Footer Strip -->
+<div class="mt-space-lg pt-space-md bg-surface-container/60 -mx-space-lg -mb-space-lg p-space-md grid grid-cols-2 sm:grid-cols-4 gap-space-sm text-center">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Root-Zone VWC</span>
+<span class="font-headline-sm text-headline-sm text-primary">31.8%</span>
+<span class="font-label-sm text-label-sm text-secondary block font-bold">▲ In Comfort Band</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Electrical Cond.</span>
+<span class="font-headline-sm text-headline-sm text-primary">2.4 mS/cm</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Balanced N-K</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Stem Diameter</span>
+<span class="font-headline-sm text-headline-sm text-primary">18.4 mm</span>
+<span class="font-label-sm text-label-sm text-secondary block font-bold">+1.2mm / wk</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Next Fertigation</span>
+<span class="font-headline-sm text-headline-sm text-primary">Today 18:00</span>
+<span class="font-label-sm text-label-sm text-tertiary-container block font-bold">Potassium Boost</span>
+</div>
+</div>
+</div>
+<!-- Comparative Satellite Sub-Batches (4 cols) -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Sub-Batch 1: Sweet Bantam Corn -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-lg relative flex flex-col justify-between">
+<div class="flex items-start justify-between mb-2">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">PARCEL BRAVO-02</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Sweet Bantam Corn</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Batch #2025-CN-09 • Tasseling Stage</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm">
+              Day 41/72
+            </span>
+</div>
+<div class="space-y-2 my-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Moisture Stress Metric</span>
+<span class="text-primary font-bold">12% (Mild Deficit)</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full" style="width: 57%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm pt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">
+                Brix Expectancy: 14.8°
+              </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">GDD: 940 °F</span>
+</div>
+</div>
+</div>
+<!-- Sub-Batch 2: Baby Spinach -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-lg relative flex flex-col justify-between">
+<div class="flex items-start justify-between mb-2">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">PARCEL FOXTROT-01</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Organic Baby Spinach</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Batch #2025-SP-18 • Mature Canopy</p>
+</div>
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm">
+              Day 26/30
+            </span>
+</div>
+<div class="space-y-2 my-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Harvest Window Readiness</span>
+<span class="text-secondary font-bold">88% Ready</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 88%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm pt-1">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+                Nitrate Index: 2.1 mg/g
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Target Pick: 48h</span>
+</div>
+</div>
+</div>
+<!-- Field Weather Micro Widget -->
+<div class="bg-primary text-on-primary p-space-md rounded-xl shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[36px]">sunny</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-primary">74°F / 58% RH</div>
+<div class="font-label-sm text-label-sm text-on-primary-container uppercase">ET: 4.8mm/day • Wind 5mph NW</div>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-secondary text-on-secondary font-label-sm text-label-sm font-bold uppercase">
+            CLEAR VAPOR
+          </span>
+</div>
+</div>
+</div>
+<!-- MAIN CULTIVATION ACTIVITY LEDGER SECTION -->
+<div class="bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden">
+<!-- Ledger Header & Filter Controls Bar (Stationery Filter Pills) -->
+<div class="p-space-md lg:p-space-lg bg-surface-container-low border-b border-surface-container flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">menu_book</span>
+<h2 class="font-headline-md text-headline-md text-primary">Cultivation Activity Ledger</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Chronological immutable field intervention stream for USDA/GlobalGAP audits.
+            </p>
+</div>
+<!-- Quick search and GAP export -->
+<div class="flex items-center gap-space-xs flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md hover:bg-surface-container shadow-sm flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>GAP Audit Export (.CSV)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-tertiary-fixed text-primary font-label-md text-label-md hover:brightness-105 shadow-sm flex items-center gap-1.5 font-bold transition-all">
+<span class="material-symbols-outlined text-[18px]">approval</span>
+<span>Sign Pending Logs (2)</span>
+</button>
+</div>
+</div>
+<!-- Filter Pills Bar -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 text-label-sm font-label-sm">
+<span class="text-on-surface-variant font-bold uppercase shrink-0 mr-1">Filter Ledger:</span>
+<button class="px-3 py-1 rounded-full bg-primary text-on-primary shadow-sm shrink-0">
+            All Events (34)
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Fertigation &amp; Nutrition
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#0284c7]"></span>
+            Drip Irrigation
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#eab308]"></span>
+            IPM &amp; Bio-Control
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#9333ea]"></span>
+            Soil / Petiole Test
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0">
+            Parcel: Delta-4 Only
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm shrink-0">
+            Lead Agronomist: Dr. H. Vance
+          </button>
+</div>
+</div>
+<!-- Ledger Table (Styled Paper Ledger) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/80 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-4">Event ID &amp; Timestamp</th>
+<th class="py-3 px-4">Target Parcel &amp; Crop</th>
+<th class="py-3 px-4">Intervention Type</th>
+<th class="py-3 px-4">Dosage / Formula / Scope</th>
+<th class="py-3 px-4">Telemetry Feedback</th>
+<th class="py-3 px-4">Operator &amp; Compliance</th>
+<th class="py-3 px-4 text-right">Ledger Verification</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<span class="font-mono font-bold text-primary block">LOG-8841-B</span>
+<span class="text-outline text-label-sm">Today • 07:15 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-bold text-primary block">Parcel Delta-4</span>
+<span class="text-on-surface-variant font-label-sm">San Marzano (#2025-TM-04)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[14px]">water_ph</span>
+                  Fertigation
+                </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-primary">Micro-Nutrient Blend B-3</div>
+<div class="text-outline text-label-sm">Ca 8.2% + Mg 3.1% • Rate: 1.8 gal/acre</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-secondary font-bold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>EC Shift: +0.3 mS/cm</span>
+</div>
+<span class="text-label-sm text-outline">pH stabilized at 6.35</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-primary">Dr. Helen Vance</div>
+<span class="text-outline text-label-sm">Lead Agronomist (#AG-109)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm -rotate-1">
+                  GAP PASSED
+                </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<span class="font-mono font-bold text-primary block">LOG-8839-A</span>
+<span class="text-outline text-label-sm">Yesterday • 05:40 PM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-bold text-primary block">Parcel Bravo-02</span>
+<span class="text-on-surface-variant font-label-sm">Sweet Bantam (#2025-CN-09)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#e0f2fe] text-[#0369a1] font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[14px]">waves</span>
+                  Drip Irrigation
+                </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-primary">Night Hydration Cycle</div>
+<div class="text-outline text-label-sm">Volume: 12,400 gal • Sub-surface line 4</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-primary font-bold">
+<span class="material-symbols-outlined text-[16px]">water_drop</span>
+<span>VWC raised to 34.0%</span>
+</div>
+<span class="text-label-sm text-outline">Pressure: 22.4 PSI OK</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-primary">Automated Mesh Controller</div>
+<span class="text-outline text-label-sm">Valve Sector B-Alpha</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm">
+                  GAP PASSED
+                </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<span class="font-mono font-bold text-primary block">LOG-8835-C</span>
+<span class="text-outline text-label-sm">Oct 24 • 09:12 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-bold text-primary block">Parcel Delta-4</span>
+<span class="text-on-surface-variant font-label-sm">San Marzano (#2025-TM-04)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#fef08a] text-[#854d0e] font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[14px]">pest_control</span>
+                  IPM / Scouting
+                </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-primary">Beneficial Nematode Release</div>
+<div class="text-outline text-label-sm">Steinernema carpocapsae • 5M per acre</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-secondary font-bold">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Larvae Count: 0 Detected</span>
+</div>
+<span class="text-label-sm text-outline">Pheromone Trap: Cleared</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-primary">Mateo Ramos</div>
+<span class="text-outline text-label-sm">Bio-Security Lead (#IPM-44)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm -rotate-2">
+                  GAP PASSED
+                </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<span class="font-mono font-bold text-primary block">LOG-8829-T</span>
+<span class="text-outline text-label-sm">Oct 22 • 03:30 PM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-bold text-primary block">Parcel Foxtrot-01</span>
+<span class="text-on-surface-variant font-label-sm">Baby Spinach (#2025-SP-18)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#f3e8ff] text-[#7e22ce] font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[14px]">biotech</span>
+                  Petiole SAP Test
+                </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-primary">Pre-Harvest Nitrate Audit</div>
+<div class="text-outline text-label-sm">Nitrate-N: 2,100 ppm • K: 4,200 ppm</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-secondary font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Meets USDA Fresh Cut Grade</span>
+</div>
+<span class="text-label-sm text-outline">Heavy Metals: Below LOD</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-primary">Central Soil Labs</div>
+<span class="text-outline text-label-sm">Certified Lab #SL-881</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm">
+                  CERT VERIFIED
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Ledger Summary Footer -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span>Displaying 1 – 4 of 34 Verified Log Entries</span>
+<span class="text-outline">•</span>
+<span class="text-secondary font-bold">Ledger Hash: 0x8a9f...b01c</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Previous</button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-bold">1</button>
+<button class="px-3 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">2</button>
+<button class="px-3 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">3</button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Next</button>
+</div>
+</div>
+</div>
+<!-- FIELD-OPTIMIZED QUICK-LOG & AI PRESCRIPTION DUAL WORKSPACE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-stretch" id="fieldLogWorkspace">
+<!-- Field Touch Logging Console (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl shadow-xl flex flex-col justify-between">
+<div>
+<!-- Header with Wet-Glove Badge -->
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">touch_app</span>
+<h3 class="font-headline-md text-headline-md text-primary">Field-Optimized Quick-Log</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                High-contrast, high-target controls calibrated for in-field tablets &amp; gloved operations.
+              </p>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm font-bold uppercase shadow-sm">
+              Touch Target Size: 48px+
+            </span>
+</div>
+<!-- 4 Large Touch Buttons for Intervention Category -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm mb-space-md">
+<button class="quick-category-btn p-3 rounded-xl bg-secondary text-on-secondary shadow-lg flex flex-col items-center justify-center gap-1 active:scale-95 transition-all text-center">
+<span class="material-symbols-outlined text-[28px]">waves</span>
+<span class="font-label-md text-label-md font-bold uppercase">Drip Water</span>
+</button>
+<button class="quick-category-btn p-3 rounded-xl bg-surface-container-low text-primary shadow-md hover:bg-surface-container flex flex-col items-center justify-center gap-1 active:scale-95 transition-all text-center">
+<span class="material-symbols-outlined text-[28px]">water_ph</span>
+<span class="font-label-md text-label-md font-bold uppercase">Fertigate</span>
+</button>
+<button class="quick-category-btn p-3 rounded-xl bg-surface-container-low text-primary shadow-md hover:bg-surface-container flex flex-col items-center justify-center gap-1 active:scale-95 transition-all text-center">
+<span class="material-symbols-outlined text-[28px]">pest_control</span>
+<span class="font-label-md text-label-md font-bold uppercase">IPM Scout</span>
+</button>
+<button class="quick-category-btn p-3 rounded-xl bg-surface-container-low text-primary shadow-md hover:bg-surface-container flex flex-col items-center justify-center gap-1 active:scale-95 transition-all text-center">
+<span class="material-symbols-outlined text-[28px]">content_cut</span>
+<span class="font-label-md text-label-md font-bold uppercase">Prune / Train</span>
+</button>
+</div>
+<!-- Interactive Entry Form Fields -->
+<div class="space-y-space-md bg-surface-container-low p-space-md rounded-lg">
+<!-- Parcel Picker & Target Sub-Block -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="font-label-sm text-label-sm font-bold uppercase text-primary block mb-1">
+                  1. Select Target Parcel
+                </label>
+<select class="w-full bg-surface-container-lowest p-3 rounded-lg font-label-md text-label-md text-primary shadow-sm focus:outline-none">
+<option selected="">Parcel Delta-4 (San Marzano Tomato)</option>
+<option>Parcel Bravo-02 (Sweet Bantam Corn)</option>
+<option>Parcel Foxtrot-01 (Organic Baby Spinach)</option>
+<option>Parcel Alpha-03 (Bell Pepper Nursery)</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-label-sm font-bold uppercase text-primary block mb-1">
+                  2. Formulation / Intervention Protocol
+                </label>
+<select class="w-full bg-surface-container-lowest p-3 rounded-lg font-label-md text-label-md text-primary shadow-sm focus:outline-none">
+<option selected="">Potassium Carbonate + Seaweed Extract (K-Boost)</option>
+<option>Calcium Nitrate + Chelated Iron Feed</option>
+<option>Deep Hydration Pulse (100% ET Replacement)</option>
+<option>Suckering &amp; Trellis Wire Elevation (Manual)</option>
+</select>
+</div>
+</div>
+<!-- Quantitative Slider: Rate / Dosage -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="font-label-sm text-label-sm font-bold uppercase text-primary">
+                  3. Application Rate / Volume
+                </label>
+<span class="font-headline-sm text-headline-sm text-secondary font-mono" id="dosageDisplay">
+                  2.4 gal / acre
+                </span>
+</div>
+<input class="w-full accent-[#006c48] h-3 bg-surface-container-highest rounded-lg cursor-pointer" id="dosageSlider" max="8.0" min="0.5" step="0.1" type="range" value="2.4"/>
+<div class="flex justify-between text-outline font-label-sm text-label-sm pt-1">
+<span>0.5 gal/ac (Maintenance)</span>
+<span>4.0 gal/ac (Recommended Peak)</span>
+<span>8.0 gal/ac (Max Threshold)</span>
+</div>
+</div>
+<!-- Quick Operator Badge & Field Notes -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-1">
+<div>
+<label class="font-label-sm text-label-sm font-bold uppercase text-primary block mb-1">
+                  4. Field Notes &amp; Observations
+                </label>
+<input class="w-full bg-surface-container-lowest p-2.5 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none placeholder:text-outline" placeholder="e.g. Canopy full, slight leaf curl on Sector N rows 4-6..." type="text"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm font-bold uppercase text-primary block mb-1">
+                  5. Operator Stamp
+                </label>
+<div class="bg-surface-container-lowest p-2 rounded-lg flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-sm">
+                      HV
+                    </span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Dr. Helen Vance</div>
+<span class="font-label-sm text-label-sm text-outline">Lead Agronomist (Digital Key: #4092)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">verified_user</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Button for gloved action -->
+<div class="pt-space-md">
+<button class="w-full py-4 rounded-xl bg-secondary text-on-secondary font-headline-sm text-headline-sm hover:brightness-105 active:scale-[0.99] transition-all shadow-xl flex items-center justify-center gap-3" id="syncSubmitBtn">
+<span class="material-symbols-outlined text-[26px]">draw</span>
+<span>Record &amp; Sync to GAP Immutable Ledger</span>
+</button>
+</div>
+</div>
+<!-- Auto-Prescription & Moisture Deficit Radar Widget (4 cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl shadow-xl flex flex-col justify-between">
+<div>
+<!-- Title & Machine Status -->
+<div class="flex items-start justify-between mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase block">AI Agronomic Assistant</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Live Prescription</h3>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-primary font-label-sm text-label-sm font-bold shadow-sm">
+              CONFIDENCE 94%
+            </span>
+</div>
+<!-- Circular Moisture Deficit Gauge (Inline SVG) -->
+<div class="bg-surface-container-low p-space-md rounded-xl text-center space-y-2 mb-space-md">
+<div class="relative w-36 h-36 mx-auto flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Track -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#dfe4dd" stroke-width="10"></circle>
+<!-- Progress Arc (68% deficit index) -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#006c48" stroke-dasharray="251.2" stroke-dashoffset="80.38" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<!-- Center Metric Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md text-primary leading-none">68%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Moisture Band</span>
+</div>
+</div>
+<p class="font-label-md text-label-md font-bold text-primary">
+              Evapotranspiration Deficit: <span class="text-secondary">-2.4 mm</span>
+</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Telemetry suggests triggering a 45-minute subsurface drip cycle at sundown to maximize nutrient uptake.
+            </p>
+</div>
+<!-- Pre-flight Compliance Checklist -->
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm font-bold uppercase text-primary block">
+              Pre-Flight Safety &amp; GAP Check
+            </span>
+<div class="space-y-1.5 font-label-md text-label-md">
+<div class="flex items-center gap-2 text-primary bg-surface-container-low p-2 rounded">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box</span>
+<span>Pre-harvest Interval (PHI) validated (&gt;14 days)</span>
+</div>
+<div class="flex items-center gap-2 text-primary bg-surface-container-low p-2 rounded">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box</span>
+<span>Worker Protection Standard (WPS) Clear</span>
+</div>
+<div class="flex items-center gap-2 text-primary bg-surface-container-low p-2 rounded">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box</span>
+<span>Water source E. coli threshold tested clean</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drone Scouting Snapshot / Micro Visual Stamp -->
+<div class="mt-space-md pt-space-md border-t border-surface-container flex items-center gap-3">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high overflow-hidden shrink-0 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[32px]">satellite_alt</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Orthomosaic Drone Scan</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Flight #F-29 completed 3 hours ago • Zero fungal blight detected.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- FIELD LOG CONFIRMATION NOTIFICATION TOAST (Simulated) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none" id="ledgerToast">
+<div class="bg-primary text-on-primary px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[26px]">task_alt</span>
+<div>
+<div class="font-headline-sm text-headline-sm">Log Recorded Successfully</div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Stamped with SHA-256 GAP Block #4092-A-8842</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Slider Label Update
+  const dosageSlider = document.getElementById('dosageSlider');
+  const dosageDisplay = document.getElementById('dosageDisplay');
+  if (dosageSlider && dosageDisplay) {
+    dosageSlider.addEventListener('input', (e) => {
+      dosageDisplay.textContent = `${e.target.value} gal / acre`;
+    });
+  }
+
+  // Quick Category Buttons active states
+  const categoryBtns = document.querySelectorAll('.quick-category-btn');
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryBtns.forEach(b => {
+        b.classList.remove('bg-secondary', 'text-on-secondary');
+        b.classList.add('bg-surface-container-low', 'text-primary');
+      });
+      btn.classList.remove('bg-surface-container-low', 'text-primary');
+      btn.classList.add('bg-secondary', 'text-on-secondary');
+    });
+  });
+
+  // Scroll to quick log workspace
+  const quickLogScrollBtn = document.getElementById('quickLogScrollBtn');
+  const openRecordModal = document.getElementById('openRecordModal');
+  const fieldLogWorkspace = document.getElementById('fieldLogWorkspace');
+
+  const scrollToLog = () => {
+    if (fieldLogWorkspace) {
+      fieldLogWorkspace.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  if (quickLogScrollBtn) quickLogScrollBtn.addEventListener('click', scrollToLog);
+  if (openRecordModal) openRecordModal.addEventListener('click', scrollToLog);
+
+  // Submit Feedback Toast
+  const syncSubmitBtn = document.getElementById('syncSubmitBtn');
+  const ledgerToast = document.getElementById('ledgerToast');
+
+  if (syncSubmitBtn && ledgerToast) {
+    syncSubmitBtn.addEventListener('click', () => {
+      // Show Toast
+      ledgerToast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+      ledgerToast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        ledgerToast.classList.remove('translate-y-0', 'opacity-100');
+        ledgerToast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t-[3px] border-primary shadow-[0_-4px_0_0_#012d1d] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter pb-space-lg border-b-2 border-primary/20"><div class="space-y-space-xs"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[20px]">verified</span><h4 class="font-headline-sm text-headline-sm text-primary">Verified Ledger</h4></div><p class="font-body-sm text-body-sm text-on-surface-variant">All plot entries, nitrogen readings, and crop cycles recorded on immutable ledger node #4092-A.</p></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Telemetry Mesh</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Soil Moisture: 34.2% (Nominal)</li><li>Canopy Index: 0.82 NDVI</li><li>Solar Array: 4.8 kW Gen</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Dispatch Protocols</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Drip Irrigation Sector B: Active</li><li>Automated Weeding Drone: Docked</li><li>Frost Advisory Alert: Clear</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Field Log System</h5><p class="font-body-sm text-body-sm text-on-surface-variant">CraveQuest AgroTech Engine · Handcrafted with tactile paper-and-stamp feedback.</p><div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md border border-primary"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-primary font-bold">FARM RUNTIME OK</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><div>© 2025 GREEN LOOP AGROTECH LTD. · RECORDED IN FIELD JOURNAL ARCHIVE</div><div class="flex items-center gap-space-md"><span>PARCEL ID: VRF-774</span><span>LAT: 44.9778° N</span><span>LON: 93.2650° W</span></div></div></div></footer></body></html>
+
+<!-- Green Loop - Harvest & Quality Assessment (CraveQuest Style) -->
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Green Loop - AgroTech Field Journal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}body{background-image:linear-gradient(to right,#e2ead8 1px,transparent 1px),linear-gradient(to bottom,#e2ead8 1px,transparent 1px);background-size:24px 24px;background-color:#f6fbf4;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#c4a24c", "outline-variant": "#c1c8c2", "primary": "#012d1d", "primary-fixed": "#c1ecd4", "on-secondary-fixed": "#002113", "surface-dim": "#d7dbd5", "tertiary-container": "#4c3900", "on-primary": "#ffffff", "on-surface": "#181d19", "inverse-primary": "#a5d0b9", "secondary-fixed": "#92f7c3", "surface": "#f6fbf4", "surface-container": "#ebefe8", "background": "#f6fbf4", "on-background": "#181d19", "on-primary-container": "#86af99", "tertiary-fixed": "#ffdf96", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-primary-fixed": "#002114", "secondary": "#006c48", "inverse-on-surface": "#edf2eb", "on-secondary-fixed-variant": "#005235", "inverse-surface": "#2d322d", "on-error": "#ffffff", "surface-bright": "#f6fbf4", "on-tertiary-fixed": "#251a00", "surface-container-high": "#e5e9e3", "secondary-container": "#92f7c3", "tertiary-fixed-dim": "#e7c268", "on-tertiary-fixed-variant": "#5a4400", "surface-tint": "#3f6653", "on-surface-variant": "#414844", "primary-container": "#1b4332", "tertiary": "#322400", "surface-container-lowest": "#ffffff", "surface-container-highest": "#dfe4dd", "surface-variant": "#dfe4dd", "surface-container-low": "#f0f5ee", "on-primary-fixed-variant": "#274e3d", "on-error-container": "#93000a", "on-secondary": "#ffffff", "on-secondary-container": "#00734d", "secondary-fixed-dim": "#75daa8", "error": "#ba1a1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1.5rem", "gutter": "1.25rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter-mobile": "0.75rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-sm": ["Bricolage Grotesque"], "headline-lg-mobile": ["Bricolage Grotesque"], "headline-md": ["Bricolage Grotesque"], "display-lg": ["Bricolage Grotesque"], "label-sm": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Bricolage Grotesque"], "label-md": ["Space Grotesk"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Bricolage Grotesque"], "label-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-lg-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-[2.5px] border-primary shadow-[0_4px_0_0_#012d1d]"><div class="h-20 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-secondary text-[24px]">potted_plant</span></div><div><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">GREEN LOOP</span><span class="px-space-xs py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary -rotate-2 shadow-[1px_1px_0px_#012d1d]">V2.4</span></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AgroTech Field Journal</p></div></div><div class="hidden xl:flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface border-2 border-primary rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-[3px_3px_0px_#006c48] transition-all" placeholder="Search parcels, crops, telemetry..." type="text"/></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="hidden md:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-secondary text-[16px]">agriculture</span><span class="font-label-md text-label-md text-primary font-bold">Valley Ridge Farm</span></div><div class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-fixed border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-secondary-fixed font-bold uppercase">48 Nodes Online</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary shadow-[2px_2px_0px_#012d1d]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="bg-surface-container-low border-t-2 border-primary px-margin lg:px-margin-desktop overflow-x-auto"><div class="max-w-7xl mx-auto flex items-center justify-between"><nav class="flex items-center gap-space-xs py-2" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[3px_3px_0px_#012d1d] -translate-y-0.5"><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="dashboard-operations" href="#">Dashboard &amp; Operations</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="farm-plot-management" href="#">Farm &amp; Plot Management</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="crop-cycles-cultivation" href="#">Crop Cycles &amp; Cultivation</a><a class="px-4 py-1.5 rounded-lg border-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container hover:border-primary transition-all" data-path="harvest-quality-assessment" href="#">Harvest &amp; Quality Assessment</a></nav><div class="hidden lg:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">sync</span><span>Syncing Telemetry Mesh</span></div></div></div></header><main class="w-full pt-28 bg-transparent min-h-screen"><div class="flex flex-col w-full">
+<!-- Washi Tape Accent Stripe -->
+<div class="relative w-full h-3 bg-tertiary-fixed border-b-2 border-primary flex items-center justify-around overflow-hidden select-none opacity-90">
+<span class="font-label-sm text-[10px] tracking-widest text-primary font-bold">/// HARVEST LEDGER QUALITY LOG</span>
+<span class="font-label-sm text-[10px] tracking-widest text-primary font-bold">QC CALIBRATION PROTOCOL V4.2</span>
+<span class="font-label-sm text-[10px] tracking-widest text-primary font-bold hidden md:inline">SPECIMEN INSPECTION BENCH</span>
+<span class="font-label-sm text-[10px] tracking-widest text-primary font-bold">IMMUTABLE BLOCK #4092-A ///</span>
+</div>
+<div class="max-w-7xl w-full mx-auto px-margin lg:px-margin-desktop py-space-md lg:py-space-lg space-y-space-lg">
+<!-- Header Section with Chunky Badge Accents -->
+<div class="relative bg-surface-container-lowest p-space-md lg:p-space-lg rounded-xl border-[2.5px] border-primary shadow-[6px_6px_0px_#012d1d]">
+<!-- Visual Washi Tape on top edge -->
+<div class="absolute -top-3 left-10 w-28 h-6 bg-tertiary-fixed/90 border border-primary -rotate-2 shadow-[2px_2px_0px_#012d1d] flex items-center justify-center">
+<span class="font-label-sm text-[10px] uppercase font-bold text-primary tracking-wider">HARVEST ARCHIVE</span>
+</div>
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md pt-2">
+<div class="space-y-space-xs max-w-3xl">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed border-2 border-primary font-label-sm text-label-sm font-bold uppercase shadow-[2px_2px_0px_#012d1d]">
+              Season Cycle 2024-Q3
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-primary text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+              Live Ledger · Updated 4 mins ago
+            </span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary font-bold -rotate-1">
+              BENCH #03-VALLEY
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            Harvest Registry &amp; Crop Quality Assessment
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Physical specimen intake logs, non-destructive Brix refractometer evaluations, and post-harvest GS1 chain-of-custody compliance.
+          </p>
+</div>
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-sm shrink-0">
+<!-- Metric Badges -->
+<div class="flex items-center gap-space-sm bg-surface-container-low p-2 rounded-lg border-2 border-primary shadow-[3px_3px_0px_#012d1d]">
+<div class="px-3 py-1 bg-surface-container-lowest rounded border border-primary text-right">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Total Yield</div>
+<div class="font-headline-sm text-headline-sm text-primary">142.8 <span class="font-label-md text-label-md">MT</span></div>
+</div>
+<div class="px-3 py-1 bg-secondary-fixed rounded border border-primary text-right">
+<div class="font-label-sm text-[10px] text-on-secondary-fixed font-bold uppercase">Yield Score</div>
+<div class="font-headline-sm text-headline-sm text-on-secondary-fixed font-black">96.2%</div>
+</div>
+</div>
+<!-- Stamped Action Button -->
+<button class="group relative px-5 py-3 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg border-[2.5px] border-primary shadow-[4px_4px_0px_#012d1d] hover:shadow-[6px_6px_0px_#012d1d] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-[1px_1px_0px_#012d1d] transition-all flex items-center gap-2" id="btn-log-batch">
+<span class="material-symbols-outlined text-[20px]">post_add</span>
+<span>+ Log New Harvest Batch</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Summary Bento Cards -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl border-2 border-primary shadow-[4px_4px_0px_#012d1d] hover:-translate-y-0.5 transition-transform">
+<div class="flex items-center justify-between pb-space-xs border-b border-primary/20">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Intake Manifest</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">inventory_2</span>
+</div>
+<div class="pt-space-sm">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">38</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant mt-1">
+<span>Total Harvested Batches</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">+6 this wk</span>
+</div>
+</div>
+<div class="mt-2 w-full bg-surface-container rounded-full h-1.5 border border-primary/30 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 78%"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl border-2 border-primary shadow-[4px_4px_0px_#012d1d] hover:-translate-y-0.5 transition-transform">
+<div class="flex items-center justify-between pb-space-xs border-b border-primary/20">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Quality Tier</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">workspace_premium</span>
+</div>
+<div class="pt-space-sm">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">91.4%</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant mt-1">
+<span>Grade A Certified</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-fixed text-primary font-label-sm text-[10px] font-bold border border-primary">PRIME</span>
+</div>
+</div>
+<div class="mt-2 w-full bg-surface-container rounded-full h-1.5 border border-primary/30 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 91.4%"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl border-2 border-primary shadow-[4px_4px_0px_#012d1d] hover:-translate-y-0.5 transition-transform">
+<div class="flex items-center justify-between pb-space-xs border-b border-primary/20">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Brix / Sugar Refract</span>
+<span class="material-symbols-outlined text-tertiary-fixed-variant text-[20px]">science</span>
+</div>
+<div class="pt-space-sm">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">12.8<span class="text-headline-sm font-normal">°Bx</span></div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant mt-1">
+<span>Median Sweetness</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">+1.2° vs target</span>
+</div>
+</div>
+<div class="mt-2 w-full bg-surface-container rounded-full h-1.5 border border-primary/30 overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl border-2 border-primary shadow-[4px_4px_0px_#012d1d] hover:-translate-y-0.5 transition-transform">
+<div class="flex items-center justify-between pb-space-xs border-b border-primary/20">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Loss Index</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">compost</span>
+</div>
+<div class="pt-space-sm">
+<div class="font-headline-lg text-headline-lg text-secondary tracking-tight">0.8%</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant mt-1">
+<span>Post-Harvest Loss</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold font-mono">&lt; 1.5% MAX</span>
+</div>
+</div>
+<div class="mt-2 w-full bg-surface-container rounded-full h-1.5 border border-primary/30 overflow-hidden">
+<div class="bg-secondary-fixed h-full" style="width: 8%"></div>
+</div>
+</div>
+</div>
+<!-- Filter & Operational Toolbar -->
+<div class="bg-surface-container-low p-space-sm lg:p-space-md rounded-xl border-2 border-primary shadow-[4px_4px_0px_#012d1d] flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm w-full md:w-auto">
+<!-- Crop Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest pl-3 pr-8 py-2 rounded-lg border-2 border-primary font-label-md text-label-md text-primary font-bold shadow-[2px_2px_0px_#012d1d] focus:outline-none focus:shadow-[3px_3px_0px_#006c48]">
+<option>All Crops (3 Active)</option>
+<option>Sweet Corn (HB-9042)</option>
+<option>Roma Tomatoes (HB-9041)</option>
+<option>Butterhead Lettuce (HB-9039)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Grade Selector -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest pl-3 pr-8 py-2 rounded-lg border-2 border-primary font-label-md text-label-md text-primary font-bold shadow-[2px_2px_0px_#012d1d] focus:outline-none focus:shadow-[3px_3px_0px_#006c48]">
+<option>Grade: All Standards</option>
+<option>Grade A+ Prime Only</option>
+<option>Grade A Processing</option>
+<option>Grade B / Secondary</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Sector Selector -->
+<div class="relative hidden sm:block">
+<select class="appearance-none bg-surface-container-lowest pl-3 pr-8 py-2 rounded-lg border-2 border-primary font-label-md text-label-md text-primary font-bold shadow-[2px_2px_0px_#012d1d] focus:outline-none focus:shadow-[3px_3px_0px_#006c48]">
+<option>Sector: Parcel Alpha &amp; Bravo</option>
+<option>Parcel Alpha - North Terrace</option>
+<option>Parcel Bravo - Green Canal</option>
+<option>Hydroponic Bays 01-04</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs w-full sm:w-auto justify-end">
+<button class="px-3 py-2 bg-surface-container-lowest rounded-lg border-2 border-primary text-primary font-label-md text-label-md font-bold shadow-[2px_2px_0px_#012d1d] hover:bg-surface-container transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>More Filters</span>
+</button>
+<button class="px-4 py-2 bg-tertiary-fixed rounded-lg border-2 border-primary text-primary font-label-md text-label-md font-bold shadow-[3px_3px_0px_#012d1d] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#012d1d] active:translate-y-0.5 active:shadow-[1px_1px_0px_#012d1d] transition-all flex items-center gap-2" id="btn-export-manifest">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export Manifests</span>
+</button>
+</div>
+</div>
+<!-- Main Two-Column Layout (Specimen Ledger Left / Inspector & Provenance Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN: Harvest Batch Ledger (7 Cols) -->
+<div class="lg:col-span-7 space-y-space-md">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">format_list_bulleted</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Harvest Batch Ledger</h2>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Showing 3 of 38 Specimens</span>
+</div>
+<!-- Specimen Card 1: Sweet Corn #HB-9042 -->
+<div class="batch-card group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-space-md shadow-[5px_5px_0px_#012d1d] transition-all cursor-pointer ring-2 ring-transparent hover:ring-secondary" data-batch-id="HB-9042">
+<!-- Tape Badge -->
+<div class="absolute -top-3 right-8 px-3 py-0.5 bg-secondary-fixed text-primary border-2 border-primary font-label-sm text-label-sm font-black rotate-2 shadow-[2px_2px_0px_#012d1d]">
+            GRADE A+ PREMIUM
+          </div>
+<div class="flex flex-col sm:flex-row gap-space-md">
+<!-- Specimen Image Preview Frame -->
+<div class="relative w-full sm:w-44 h-36 rounded-lg border-2 border-primary overflow-hidden shrink-0 bg-surface-container shadow-[2px_2px_0px_#012d1d]">
+<img class="w-full h-full object-cover" data-alt="Close up specimen macro shot of freshly harvested golden sweet corn cobs in a wooden crate with dewdrops, bright morning natural sunlight, crisp agro-photographic field journal style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4s6Jdo-1BlOszXJk5UC180YDpVfRXIio17iHa2B_6rYWW9tUHnLU3HxX0EqmYjcmqs43prvDE3cLbwkmNhVWnjHOkMUdD3KP12Fwlekd5dYAgDRknpiMW83HYFRSkl1c5u8DFt-uQYkJ3xgnJYMuTJg-_Fi8Gx4nCptyrHlHEv8qdLq18xTre-wzLuLg7v4UD0FBrEBsECBZzPn-sACJPL1b0e5fW_uT3BIqBgjRGXJ4kZG3Xd6xgNA"/>
+<div class="absolute bottom-1.5 left-1.5 bg-primary/90 text-on-primary font-label-sm text-[10px] px-1.5 py-0.5 rounded font-mono">
+                LOT: SC-09
+              </div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 space-y-space-xs min-w-0">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Sweet Corn (Golden Bantam)</h3>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span class="font-mono font-bold text-primary">#HB-9042</span>
+<span>•</span>
+<span>Parcel Alpha (Sector 4B)</span>
+<span>•</span>
+<span>06:40 AM Intake</span>
+</div>
+</div>
+</div>
+<!-- Metrics Specimen Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-1">
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Net Weight</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">8,400 <span class="text-[11px] font-normal">kg</span></div>
+</div>
+<div class="p-1.5 bg-tertiary-fixed/60 rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-primary uppercase font-bold">Brix Sugar</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">14.2°Bx</div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Uniformity</div>
+<div class="font-label-lg text-label-lg font-bold text-secondary">98%</div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Moisture</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">74%</div>
+</div>
+</div>
+<!-- Tags / Dot leader status -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs border-t border-primary/15 text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm border border-primary font-bold">Cold Storage: 4.2°C</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-primary">Hydro-cooled</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-1">
+                  Active Inspection Target <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Specimen Card 2: Roma & San Marzano Tomatoes #HB-9041 -->
+<div class="batch-card group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-space-md shadow-[5px_5px_0px_#012d1d] transition-all cursor-pointer ring-2 ring-transparent hover:ring-secondary" data-batch-id="HB-9041">
+<!-- Tape Badge -->
+<div class="absolute -top-3 right-8 px-3 py-0.5 bg-surface-container-high text-primary border-2 border-primary font-label-sm text-label-sm font-black -rotate-1 shadow-[2px_2px_0px_#012d1d]">
+            GRADE A COMMISSARY
+          </div>
+<div class="flex flex-col sm:flex-row gap-space-md">
+<!-- Specimen Image Preview Frame -->
+<div class="relative w-full sm:w-44 h-36 rounded-lg border-2 border-primary overflow-hidden shrink-0 bg-surface-container shadow-[2px_2px_0px_#012d1d]">
+<img class="w-full h-full object-cover" data-alt="Deep red glossy heirloom Roma and San Marzano tomatoes stacked in rustic breathable wooden bins with paper labels and caliper measurement tools on the desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ59og-8zQJOZZIch1mZIZOktvvir-N-vI8oPK8yfbn3ypThoGaWHn6hWwH-KIS0dqimelI8MqfufIZqtnZ1YL3rE26wpU-tQihiNCgeuqVSD0P2xFVSovYeypJDUrVL6GjlB7KRdCA1P0VuV-caK0TG6TQBlGyUaXIbyaqkLjrcV_JFE5I8kFg7-GUolNJn1ZrFkWLQ9n0BqbaY-t3ysGKPiHT8VzHD-dbZ3Nfz1V7P742ZzUhvlUCQ"/>
+<div class="absolute bottom-1.5 left-1.5 bg-primary/90 text-on-primary font-label-sm text-[10px] px-1.5 py-0.5 rounded font-mono">
+                LOT: TM-14
+              </div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 space-y-space-xs min-w-0">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Roma &amp; San Marzano Tomatoes</h3>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span class="font-mono font-bold text-primary">#HB-9041</span>
+<span>•</span>
+<span>Parcel Bravo (Canal Field 2)</span>
+<span>•</span>
+<span>08:15 AM Intake</span>
+</div>
+</div>
+</div>
+<!-- Metrics Specimen Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-1">
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Net Weight</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">5,120 <span class="text-[11px] font-normal">kg</span></div>
+</div>
+<div class="p-1.5 bg-tertiary-fixed/60 rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-primary uppercase font-bold">Brix Refract</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">6.2°Bx</div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Firmness</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">4.8 <span class="text-[10px] font-normal">kg/cm²</span></div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Skin Defect</div>
+<div class="font-label-lg text-label-lg font-bold text-secondary">0.4%</div>
+</div>
+</div>
+<!-- Tags / Dot leader status -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs border-t border-primary/15 text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm border border-primary">Ripeness 94%</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm border border-primary">Acidity pH 4.3</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Staged for sorting line B</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Specimen Card 3: Organic Butterhead Lettuce #HB-9039 -->
+<div class="batch-card group relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-space-md shadow-[5px_5px_0px_#012d1d] transition-all cursor-pointer ring-2 ring-transparent hover:ring-secondary" data-batch-id="HB-9039">
+<!-- Tape Badge -->
+<div class="absolute -top-3 right-8 px-3 py-0.5 bg-secondary-fixed text-primary border-2 border-primary font-label-sm text-label-sm font-black rotate-1 shadow-[2px_2px_0px_#012d1d]">
+            GRADE A ORGANIC
+          </div>
+<div class="flex flex-col sm:flex-row gap-space-md">
+<!-- Specimen Image Preview Frame -->
+<div class="relative w-full sm:w-44 h-36 rounded-lg border-2 border-primary overflow-hidden shrink-0 bg-surface-container shadow-[2px_2px_0px_#012d1d]">
+<img class="w-full h-full object-cover" data-alt="Crisp vibrant green organic butterhead lettuce heads resting on craft paper with hydroponic root sponges intact and inspection stamp stickers, soft greenhouse lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuRdQUsTsJcVBZ7pltBrmgA6ER0mC-4xZVHDwATeE9N3PrCZ1d1AtbT2GU_bx0ib0_y2jy5xZVzl-cmyP19WjcnQj3tCmPvTItmJuDMcaIKRmQv0mNzaIl5OSYfK6I4bPCGtWtZf_rRTnNY1FIWfLro-81uaFFNDKyIY1i1FYoWXU5mXLVzC9kOazToh0-zgeYak4ptTi4gcUHXpd9MZG8sXJJrvU5N7eluZ_yZdSDYY9aruEuvhRoQg"/>
+<div class="absolute bottom-1.5 left-1.5 bg-primary/90 text-on-primary font-label-sm text-[10px] px-1.5 py-0.5 rounded font-mono">
+                LOT: LT-02
+              </div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 space-y-space-xs min-w-0">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Organic Butterhead Lettuce</h3>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span class="font-mono font-bold text-primary">#HB-9039</span>
+<span>•</span>
+<span>Hydroponic Bay 02</span>
+<span>•</span>
+<span>09:45 AM Intake</span>
+</div>
+</div>
+</div>
+<!-- Metrics Specimen Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-1">
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Net Weight</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">1,850 <span class="text-[11px] font-normal">kg</span></div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Blight Index</div>
+<div class="font-label-lg text-label-lg font-bold text-secondary">0.0%</div>
+</div>
+<div class="p-1.5 bg-secondary-fixed/50 rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-primary uppercase font-bold">Wash Sanitized</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">PASS</div>
+</div>
+<div class="p-1.5 bg-surface-container-low rounded border border-primary/40 text-center">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase">Crispness</div>
+<div class="font-label-lg text-label-lg font-bold text-primary">99.1%</div>
+</div>
+</div>
+<!-- Tags / Dot leader status -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs border-t border-primary/15 text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-primary font-label-sm text-label-sm border border-primary font-bold">Rapid-Pack Cold Chain</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-primary">Certified Non-GMO</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Pre-cooling in Chamber 3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ledger Footer Summary strip -->
+<div class="p-3 bg-surface-container rounded-lg border-2 border-primary flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-bold text-primary">Physical Field Journal Sign-off:</span>
+<span class="text-on-surface-variant font-mono">Inspector J. Thorne (ID #882)</span>
+</div>
+<button class="font-label-sm text-label-sm font-bold text-secondary hover:underline flex items-center gap-1">
+<span>View Full 38-Batch Archive</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- RIGHT COLUMN: Inspector Bench & Batch Provenance Passport (5 Cols) -->
+<div class="lg:col-span-5 space-y-space-md">
+<!-- PANEL 1: Agronomic Inspector Panel with Visual Grading Matrix -->
+<div class="relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-space-md shadow-[6px_6px_0px_#012d1d]">
+<!-- Header Tape Label -->
+<div class="flex items-center justify-between pb-space-sm border-b-2 border-primary">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Agronomic Inspector Panel</h3>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed border border-primary font-label-sm text-label-sm text-primary font-bold">
+              BENCH CALIBRATED
+            </span>
+</div>
+<div class="py-space-sm space-y-space-md">
+<!-- Target Batch Meta Note -->
+<div class="flex items-center justify-between bg-surface-container-low p-2 rounded-lg border border-primary">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Current Specimen Evaluation:</span>
+<span class="font-mono font-bold text-primary bg-surface-container-lowest px-2 py-0.5 rounded border border-primary/50">#HB-9042 (Sweet Corn)</span>
+</div>
+<!-- Visual Grading Matrix Gauges -->
+<div class="space-y-space-sm">
+<!-- Brix Scale Rating Gauge -->
+<div class="p-3 bg-surface-container-low rounded-lg border-2 border-primary/80">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">water_drop</span>
+<span class="font-label-md text-label-md text-primary font-bold">Brix Scale Rating Gauge</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary">14.2°Bx <span class="font-label-sm text-label-sm text-secondary font-bold">(Super Sweet)</span></span>
+</div>
+<!-- Analog Segmented Bar -->
+<div class="relative w-full h-4 bg-surface-container border border-primary rounded flex overflow-hidden">
+<div class="w-1/4 h-full bg-outline-variant/50 border-r border-primary/30 flex items-center justify-center font-mono text-[9px]">Low &lt;8°</div>
+<div class="w-1/4 h-full bg-tertiary-fixed-dim/60 border-r border-primary/30 flex items-center justify-center font-mono text-[9px]">Standard 10°</div>
+<div class="w-1/4 h-full bg-secondary-fixed border-r border-primary/30 flex items-center justify-center font-mono text-[9px]">High 12°</div>
+<div class="w-1/4 h-full bg-secondary text-on-secondary font-bold flex items-center justify-center font-mono text-[9px]">Prime &gt;14°</div>
+</div>
+<!-- Needle Marker Indicator -->
+<div class="flex justify-between text-[10px] font-mono text-on-surface-variant mt-1">
+<span>0°Bx</span>
+<span class="text-secondary font-bold font-mono">▲ CURRENT SPECIMEN: 14.2°</span>
+<span>20°Bx</span>
+</div>
+</div>
+<!-- Firmness Penetrometer Bar -->
+<div class="p-3 bg-surface-container-low rounded-lg border-2 border-primary/80">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">compress</span>
+<span class="font-label-md text-label-md text-primary font-bold">Penetrometer Firmness Bar</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-primary">4.8 <span class="text-body-sm font-normal">kg/cm²</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 border border-primary overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 82%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-mono text-on-surface-variant mt-1">
+<span>Elastic (0.0)</span>
+<span class="text-primary font-bold">Target Index: 4.5–5.2</span>
+<span>Rigid (6.0)</span>
+</div>
+</div>
+<!-- Color Uniformity Spectrum -->
+<div class="p-3 bg-surface-container-low rounded-lg border-2 border-primary/80">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">palette</span>
+<span class="font-label-md text-label-md text-primary font-bold">Color Uniformity Spectrum</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-primary font-label-sm text-label-sm font-black border border-primary">
+                    98.4% MATCH
+                  </span>
+</div>
+<!-- Spectrum gradient bar -->
+<div class="h-3 w-full rounded border border-primary bg-gradient-to-r from-[#d8e2dc] via-[#f7d070] to-[#52b788]"></div>
+<div class="flex justify-between text-[10px] font-mono text-on-surface-variant mt-1">
+<span>Pantone 12-0720</span>
+<span class="font-bold text-primary">L* 84.2 | a* -2.1 | b* 46.8</span>
+<span>Spectral Pass</span>
+</div>
+</div>
+</div>
+<!-- AI-Vision Edge Model Confirmation Box -->
+<div class="p-3 rounded-lg bg-surface-container-lowest border-2 border-primary border-dashed flex items-start gap-3">
+<div class="w-8 h-8 rounded bg-secondary-fixed flex items-center justify-center border border-primary shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">smart_toy</span>
+</div>
+<div class="space-y-0.5 text-body-sm">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm font-bold text-primary uppercase">Edge-AI Vision Model V4.1:</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary text-on-secondary font-mono text-[10px] font-bold">CONFIRMED</span>
+</div>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">
+                  Raster scan of 40 sample ears reveals zero stem-borer puncture marks, 99.4% kernel row alignment, and nominal tip-fill index (&gt;95%).
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- PANEL 2: Batch Provenance Passport -->
+<div class="relative bg-surface-container-lowest rounded-xl border-[2.5px] border-primary p-space-md shadow-[6px_6px_0px_#012d1d]">
+<!-- Physical Stamp Graphic floating -->
+<div class="absolute top-3 right-4 transform rotate-12 pointer-events-none">
+<div class="border-[3px] border-secondary text-secondary px-3 py-1 rounded font-headline-sm text-headline-sm font-black tracking-widest uppercase opacity-85 shadow-[1px_1px_0px_#006c48]">
+              GS1 EPCIS
+              <div class="text-[9px] font-mono tracking-tighter text-center">CHAIN-VERIFIED</div>
+</div>
+</div>
+<div class="pb-space-sm border-b-2 border-primary">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">badge</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Provenance Passport</h3>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Immutable traceability certificate for dispatch</p>
+</div>
+<div class="pt-space-md space-y-space-md">
+<!-- QR Code Specimen Box & Cryptographic Hash -->
+<div class="flex items-center gap-space-md p-space-sm bg-surface-container-low rounded-lg border-2 border-primary">
+<!-- SVG QR Code Vector -->
+<div class="w-24 h-24 bg-surface-container-lowest border-2 border-primary rounded p-1.5 shrink-0 shadow-[2px_2px_0px_#012d1d] flex items-center justify-center">
+<svg class="w-full h-full text-primary" fill="currentColor" viewbox="0 0 100 100">
+<!-- QR Finder Pattern TL -->
+<rect fill="none" height="28" stroke="currentColor" stroke-width="4" width="28" x="5" y="5"></rect>
+<rect fill="currentColor" height="16" width="16" x="11" y="11"></rect>
+<!-- QR Finder Pattern TR -->
+<rect fill="none" height="28" stroke="currentColor" stroke-width="4" width="28" x="67" y="5"></rect>
+<rect fill="currentColor" height="16" width="16" x="73" y="11"></rect>
+<!-- QR Finder Pattern BL -->
+<rect fill="none" height="28" stroke="currentColor" stroke-width="4" width="28" x="5" y="67"></rect>
+<rect fill="currentColor" height="16" width="16" x="11" y="73"></rect>
+<!-- Modules -->
+<rect height="8" width="8" x="38" y="10"></rect>
+<rect height="6" width="6" x="50" y="18"></rect>
+<rect height="6" width="6" x="38" y="24"></rect>
+<rect height="8" width="8" x="50" y="30"></rect>
+<rect height="6" width="6" x="10" y="42"></rect>
+<rect height="8" width="8" x="22" y="42"></rect>
+<rect height="6" width="6" x="34" y="42"></rect>
+<rect height="6" width="12" x="46" y="42"></rect>
+<rect height="8" width="8" x="64" y="42"></rect>
+<rect height="6" width="10" x="80" y="42"></rect>
+<rect height="8" width="10" x="38" y="56"></rect>
+<rect height="8" width="8" x="54" y="56"></rect>
+<rect height="6" width="6" x="68" y="56"></rect>
+<rect height="8" width="8" x="80" y="56"></rect>
+<rect height="8" width="8" x="42" y="72"></rect>
+<rect height="6" width="12" x="56" y="72"></rect>
+<rect height="8" width="8" x="74" y="72"></rect>
+<rect height="8" width="8" x="46" y="86"></rect>
+<rect height="6" width="6" x="62" y="86"></rect>
+<rect height="6" width="14" x="76" y="86"></rect>
+</svg>
+</div>
+<!-- GS1 Metadata Block -->
+<div class="space-y-1 min-w-0">
+<div class="font-label-sm text-[10px] text-on-surface-variant uppercase font-mono">GTIN / EPCIS ID</div>
+<div class="font-mono text-body-sm font-bold text-primary truncate">urn:epc:id:sgtin:0843291.09042.88</div>
+<div class="text-[11px] text-on-surface-variant font-mono">HASH: 7f8a92...c419e</div>
+<div class="pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-fixed text-primary font-label-sm text-[10px] font-bold border border-primary">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                    Ledger Node #4092-A Synced
+                  </span>
+</div>
+</div>
+</div>
+<!-- Dot-Leader Ledger Details -->
+<div class="space-y-2 text-body-sm font-mono pt-1">
+<div class="flex items-baseline justify-between">
+<span class="text-on-surface-variant font-body-sm">Harvest Cut Time</span>
+<span class="text-outline-variant font-mono text-[10px]">. . . . . . . . . . . . . . . .</span>
+<span class="font-bold text-primary">Today, 05:45 AM CST</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-on-surface-variant font-body-sm">Field Crew Lead</span>
+<span class="text-outline-variant font-mono text-[10px]">. . . . . . . . . . . . . . . .</span>
+<span class="font-bold text-primary">M. Santos (Crew #4)</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-on-surface-variant font-body-sm">Cold Chain Transit</span>
+<span class="text-outline-variant font-mono text-[10px]">. . . . . . . . . . . . . . . .</span>
+<span class="font-bold text-secondary">Verified &lt; 4.4°C</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-on-surface-variant font-body-sm">Destination Hub</span>
+<span class="text-outline-variant font-mono text-[10px]">. . . . . . . . . . . . . . . .</span>
+<span class="font-bold text-primary">Midwest Co-Op Whse #2</span>
+</div>
+</div>
+<!-- Action Buttons for Passport -->
+<div class="flex items-center gap-space-sm pt-2">
+<button class="flex-1 py-2.5 px-3 rounded-lg bg-surface-container-lowest border-2 border-primary text-primary font-label-md text-label-md font-bold shadow-[3px_3px_0px_#012d1d] hover:bg-surface-container hover:shadow-[4px_4px_0px_#012d1d] active:shadow-[1px_1px_0px_#012d1d] active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5" id="btn-download-svg">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download SVG Passport</span>
+</button>
+<button class="py-2.5 px-3 rounded-lg bg-tertiary-fixed border-2 border-primary text-primary font-label-md text-label-md font-bold shadow-[3px_3px_0px_#012d1d] hover:shadow-[4px_4px_0px_#012d1d] active:translate-y-0.5 transition-all flex items-center justify-center gap-1" id="btn-print-tag">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Print Tag</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Floating Toast Feedback (Hidden by default, triggered via JS) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-surface-container-lowest border-[2.5px] border-primary p-4 rounded-xl shadow-[6px_6px_0px_#012d1d] flex items-center gap-3" id="toast-notification">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center border-2 border-primary shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">check</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary" id="toast-title">Ledger Updated</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant" id="toast-message">Manifest generated and passport stamped.</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions and card selection behavior
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.batch-card');
+      const toast = document.getElementById('toast-notification');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMessage = document.getElementById('toast-message');
+
+      function triggerToast(title, msg) {
+        toastTitle.innerText = title;
+        toastMessage.innerText = msg;
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3000);
+      }
+
+      // Specimen Selection
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('ring-secondary', 'border-secondary'));
+          card.classList.add('ring-secondary');
+          const batchId = card.getAttribute('data-batch-id');
+          triggerToast('Specimen Loaded', `Evaluation bench aligned with Batch #${batchId}`);
+        });
+      });
+
+      // Button hooks
+      document.getElementById('btn-log-batch')?.addEventListener('click', () => {
+        triggerToast('Intake Bench Ready', 'New batch record form initialized on field terminal.');
+      });
+
+      document.getElementById('btn-export-manifest')?.addEventListener('click', () => {
+        triggerToast('Manifest Stamped', '38 Batch records compiled to signed PDF ledger.');
+      });
+
+      document.getElementById('btn-download-svg')?.addEventListener('click', () => {
+        triggerToast('Certificate Exported', 'GS1 Provenance vector ticket downloaded.');
+      });
+
+      document.getElementById('btn-print-tag')?.addEventListener('click', () => {
+        triggerToast('Thermal Printer Dispatched', 'Luggage tag queued to Zebra #Z4M printer.');
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t-[3px] border-primary shadow-[0_-4px_0_0_#012d1d] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-lg"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter pb-space-lg border-b-2 border-primary/20"><div class="space-y-space-xs"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[20px]">verified</span><h4 class="font-headline-sm text-headline-sm text-primary">Verified Ledger</h4></div><p class="font-body-sm text-body-sm text-on-surface-variant">All plot entries, nitrogen readings, and crop cycles recorded on immutable ledger node #4092-A.</p></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Telemetry Mesh</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Soil Moisture: 34.2% (Nominal)</li><li>Canopy Index: 0.82 NDVI</li><li>Solar Array: 4.8 kW Gen</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Dispatch Protocols</h5><ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Drip Irrigation Sector B: Active</li><li>Automated Weeding Drone: Docked</li><li>Frost Advisory Alert: Clear</li></ul></div><div class="space-y-space-xs"><h5 class="font-label-lg text-label-lg text-primary uppercase">Field Log System</h5><p class="font-body-sm text-body-sm text-on-surface-variant">CraveQuest AgroTech Engine · Handcrafted with tactile paper-and-stamp feedback.</p><div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md border border-primary"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-primary font-bold">FARM RUNTIME OK</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><div>© 2025 GREEN LOOP AGROTECH LTD. · RECORDED IN FIELD JOURNAL ARCHIVE</div><div class="flex items-center gap-space-md"><span>PARCEL ID: VRF-774</span><span>LAT: 44.9778° N</span><span>LON: 93.2650° W</span></div></div></div></footer></body></html>
